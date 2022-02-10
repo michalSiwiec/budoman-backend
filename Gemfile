@@ -29,6 +29,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
 
 gem 'graphql'
+gem 'aws-sdk-s3', '~> 1.112'
 gem 'table_print'
 
 group :development, :test do
