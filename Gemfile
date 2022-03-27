@@ -31,6 +31,7 @@ gem 'rack-cors'
 gem 'graphql'
 gem 'aws-sdk-s3', '~> 1.112'
 gem 'table_print'
+gem 'rollbar'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
