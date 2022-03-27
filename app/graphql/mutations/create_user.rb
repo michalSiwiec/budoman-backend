@@ -6,7 +6,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      Graphql::CreateUserHandler.new(@params).handle
+      Graphql::CreateUserHandler.handle(@params)
     end
   end
 end

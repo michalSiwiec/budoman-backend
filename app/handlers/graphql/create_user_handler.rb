@@ -1,5 +1,5 @@
 module Graphql
-  class CreateUserHandler
+  class CreateUserHandler < BaseHandler
     def initialize(params)
       @params = params
     end

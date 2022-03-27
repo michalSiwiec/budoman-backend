@@ -19,10 +19,7 @@ module Aws
       end
 
       def avatar_details
-        {
-          main: @payload[:main],
-          storage_path: full_path
-        }
+        { main: @payload[:main], storage_path: full_path }
       end
 
       private
