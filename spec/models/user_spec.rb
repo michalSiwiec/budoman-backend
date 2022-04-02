@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User do
@@ -16,9 +18,9 @@ RSpec.describe User do
           /Email is already taken!/
         end
 
-         let(:incorrect_format_msg) do
+        let(:incorrect_format_msg) do
           /Email has incorrect format!/
-         end
+        end
 
         it 'raise email is already taken' do
           create(:user)
@@ -27,7 +29,7 @@ RSpec.describe User do
             create(:user)
           end.to raise_error(validation_error_class, taken_msg)
         end
-  
+
         it 'raise email has uncorrect format' do
           expect do
             create(:user, :incorrect_email)
@@ -62,13 +64,13 @@ RSpec.describe User do
           end.to raise_error(validation_error_class, additional_fields_msg)
         end
 
-        it 'raise incorrect fileds when demand key in missing' do
+        it 'raise incorrect fields when demand key in missing' do
           expect do
             create(:user, :missing_fields_in_avatars)
           end.to raise_error(validation_error_class, additional_fields_msg)
         end
 
-        it 'raise incorrect fileds types when has incorrect types' do
+        it 'raise incorrect fields types when has incorrect types' do
           expect do
             create(:user, :incorrect_avatar_types)
           end.to raise_error(validation_error_class, incorrect_types_msg)

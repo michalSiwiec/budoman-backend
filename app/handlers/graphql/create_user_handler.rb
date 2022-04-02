@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module Graphql
   class CreateUserHandler < BaseHandler
     def initialize(params)
+      super()
       @params = params
     end
 
@@ -18,7 +21,7 @@ module Graphql
     end
 
     def user_params
-      @params.except(:avatars)
+      @params.merge({ avatars: [] })
     end
 
     def save_avatars_on_aws

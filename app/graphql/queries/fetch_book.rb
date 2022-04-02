@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Queries
   class FetchBook < Queries::BaseQuery
     argument :id, ID, required: true

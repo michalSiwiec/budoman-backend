@@ -1,41 +1,40 @@
+# frozen_string_literal: true
+
 class UserValidator < ActiveModel::Validator
-  ALLOWED_KEY = %w[main storage_path]
+  ALLOWED_KEY = %w[main storage_path].freeze
 
   def validate(record)
     record.avatars.each do |avatar|
       @avatar = avatar
-
-      if (has_avatar_additional_keys? || !has_demand_keys?)
-        record.errors.add(:avatars, "should have fields: #{ALLOWED_KEY} but got: #{@avatar.keys}")
-        return
+      if avatar_additional_keys? || !demand_keys?
+        return record.errors.add(:avatars, "should have fields: #{ALLOWED_KEY} but got: #{@avatar.keys}")
       end
 
-      if (!has_correct_types?)
-        record.errors.add(
+      unless correct_types?
+        return record.errors.add(
           :avatars,
           "main should be Boolean, storage_path should be String but got
             main: #{@avatar['main'].class}, storage_path: #{@avatar['storage_path'].class}"
         )
-        return
       end
     end
   end
 
   private
 
-  def has_avatar_additional_keys?
+  def avatar_additional_keys?
     (@avatar.keys - ALLOWED_KEY).present?
   end
 
-  def has_demand_keys?
+  def demand_keys?
     ALLOWED_KEY.each do |allowed_key|
       return false unless @avatar.keys.include?(allowed_key)
     end
 
-    return true
+    true
   end
 
-  def has_correct_types?
-    @avatar['main'].in?(['true', 'false']) && @avatar['storage_path'].is_a?(String)
+  def correct_types?
+    @avatar['main'].in?(%w[true false]) && @avatar['storage_path'].is_a?(String)
   end
 end

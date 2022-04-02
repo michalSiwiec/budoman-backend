@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :user do
-    email { "janusz123@gmail.com" }
-    password  { "qwebjbH5586" }
+    email { 'janusz123@gmail.com' }
+    password  { 'qwebjbH5586' }
     avatars { [{ main: true, storage_path: 'path_to_avatar' }, { main: false, storage_path: 'path_to_avatar2' }] }
 
     trait :incorrect_email do

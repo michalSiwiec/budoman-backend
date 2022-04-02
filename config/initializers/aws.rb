@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'aws-sdk-core'
 
 S3_BUCKET = Aws::S3::Resource.new.bucket(Rails.application.config.aws_bucket)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class MutationType < Types::BaseObject
     field :update_book, mutation: Mutations::UpdateBook, description: 'Updates book and returns it'

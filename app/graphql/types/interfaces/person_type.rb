@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Types
   module Interfaces
     module PersonType
       include Types::BaseInterface
-  
+
       field :id, ID, null: false
       field :name, String, null: true
       field :surname, String, null: true

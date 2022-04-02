@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Queries
   class FetchPersons < Queries::BaseQuery
     type [Types::Unions::PersonUnionType], null: false

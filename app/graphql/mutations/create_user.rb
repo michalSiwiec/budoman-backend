@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Mutations
   class CreateUser < BaseMutation
     argument :input, Types::Inputs::UserInputType, required: true
