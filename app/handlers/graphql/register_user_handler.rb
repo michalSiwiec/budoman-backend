@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Graphql
-  class CreateUserHandler < BaseHandler
+  class RegisterUserHandler < BaseHandler
     def initialize(params)
       super()
       @params = params
