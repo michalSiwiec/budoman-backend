@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Graphql::RegisterUser do
+RSpec.describe Graphql::Users::RegisterUserHandler do
   subject { described_class.handle(params) }
 
   let(:params) do
