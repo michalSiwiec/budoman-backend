@@ -16,42 +16,10 @@ ActiveRecord::Schema.define(version: 2022_02_04_163618) do
   enable_extension "hstore"
   enable_extension "plpgsql"
 
-  create_table "authors", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "book_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "men", force: :cascade do |t|
-    t.string "name"
-    t.string "surname"
-    t.integer "age"
-    t.string "favourite_car"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email"
     t.string "password"
     t.hstore "avatars", array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "women", force: :cascade do |t|
-    t.string "name"
-    t.string "surname"
-    t.integer "age"
-    t.string "favourite_jacket"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
