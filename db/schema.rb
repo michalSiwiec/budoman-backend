@@ -10,11 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_05_180837) do
+ActiveRecord::Schema.define(version: 2022_06_05_195631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "opinions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "content"
+    t.integer "mark"
+    t.uuid "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_opinions_on_user_id"
+  end
 
   create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
@@ -33,4 +42,5 @@ ActiveRecord::Schema.define(version: 2022_06_05_180837) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "opinions", "users"
 end

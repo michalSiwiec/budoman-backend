@@ -9,4 +9,6 @@ class User < ApplicationRecord
   validates :password,
             format: { with: PASSWORD, message: 'must be at least 6 characters and include one number and one letter.' }
   validates_with UserValidator, fields: [:avatars]
+
+  has_many :opinions
 end

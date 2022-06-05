@@ -6,5 +6,6 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :products, resolver: Queries::GetProducts, description: 'Returns array of products'
+    field :opinions, resolver: Queries::GetOpinions, description: 'Returns array of opinions'
   end
 end

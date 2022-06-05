@@ -1,71 +1,40 @@
-Book.create!([
+User.create!([
   {
-    title: 'Clean Code'
+    email: 'andrzej123@gmail.com',
+    password: '1234Hbjkadasd',
+    avatars: []
   },
   {
-    title: 'Bezpieczeństwo aplikacji Webowych'
-  },
-  {
-    title: 'Agile Web development with rails'
+    email: 'pawel123@gmail.com',
+    password: '1234Hbjkajjkkaasd',
+    avatars: []
   }
 ])
 
-Author.create!([
+Opinion.create!([
   {
-    first_name: 'Andrzej',
-    last_name: 'Kowalczyk',
-    book_id: Book.find_by(title: 'Clean Code').id
+    content: 'Szeroki wybór oraz miła obsługa klienta. Napewno tu wrócę',
+    mark: 5,
+    user_id: User.first.id
   },
   {
-    first_name: 'Jan',
-    last_name: 'Kowalski',
-    book_id: Book.find_by(title: 'Bezpieczeństwo aplikacji Webowych').id
-  },
-  {
-    first_name: 'Stefan',
-    last_name: 'Nowak',
-    book_id: Book.find_by(title: 'Agile Web development with rails').id
+    content: 'Szybka dostawa, polecam.',
+    mark: 4,
+    user_id: User.second.id
   }
 ])
 
-Woman.create!([
+Product.create!([
   {
-    name: 'Anna',
-    surname: 'Nowak',
-    age: 27,
-    favourite_jacket: 'Example jacket1'
+    name: 'Mlotek',
+    price: 44.55,
+    available_quantity: 12,
+    picture: ''
   },
   {
-    name: 'Anna',
-    surname: 'Kowalska',
-    age: 21,
-    favourite_jacket: 'Example jacket2'
-  },
-  {
-    name: 'Krystyna',
-    surname: 'Nowak',
-    age: 57,
-    favourite_jacket: 'Example jacket3'
-  }
-])
-
-Man.create([
-  {
-    name: 'Adam',
-    surname: 'Nowak',
-    age: 33,
-    favourite_car: 'Jaguar'
-  },
-  {
-    name: 'Paweł',
-    surname: 'Kowalski',
-    age: 22,
-    favourite_car: 'Toyota'
-  },
-  {
-    name: 'Jakub',
-    surname: 'Nowakowski',
-    age: 77,
-    favourite_car: 'Audi'
+    name: 'Koparka',
+    price: '200000',
+    available_quantity: 3,
+    picture: ''
   }
 ])
