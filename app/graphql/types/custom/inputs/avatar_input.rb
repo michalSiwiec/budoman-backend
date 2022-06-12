@@ -4,9 +4,9 @@ module Types
   module Custom
     module Inputs
       class AvatarInput < Types::BaseInputObject
-        argument :main, Boolean
-        argument :base64, String
-        argument :file_name, String
+        argument :main, Boolean, required: true
+        argument :base64, String, required: true
+        argument :file_name, String, required: true
       end
     end
   end

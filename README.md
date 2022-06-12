@@ -6,7 +6,6 @@ TODO
 5) Sync front and backend validation
 6) Swagger with rswag
 7) Rescue from exception with rescue_from 
-8) for inputs - add required: true
 
 To run test execute: rspec
 To run linter execute: rubocop
