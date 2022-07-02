@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_02_084808) do
+ActiveRecord::Schema.define(version: 2022_07_02_140601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_07_02_084808) do
     t.string "name"
     t.float "price"
     t.integer "available_quantity"
-    t.string "picture"
+    t.string "picture_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "product_cathegory_id"
@@ -51,4 +51,5 @@ ActiveRecord::Schema.define(version: 2022_07_02_084808) do
   end
 
   add_foreign_key "opinions", "users"
+  add_foreign_key "products", "product_cathegories"
 end

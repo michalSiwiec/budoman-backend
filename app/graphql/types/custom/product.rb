@@ -7,7 +7,7 @@ module Types
       field :name, String, null: false
       field :price, Float, null: false
       field :available_quantity, Integer, null: false
-      field :picture, String, null: false
+      field :picture_path, String, null: false
     end
   end
 end
