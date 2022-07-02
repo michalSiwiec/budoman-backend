@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_05_195631) do
+ActiveRecord::Schema.define(version: 2022_07_02_084808) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 2022_06_05_195631) do
     t.index ["user_id"], name: "index_opinions_on_user_id"
   end
 
+  create_table "product_cathegories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -32,6 +38,8 @@ ActiveRecord::Schema.define(version: 2022_06_05_195631) do
     t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.uuid "product_cathegory_id"
+    t.index ["product_cathegory_id"], name: "index_products_on_product_cathegory_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
