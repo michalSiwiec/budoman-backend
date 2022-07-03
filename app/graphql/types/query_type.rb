@@ -5,7 +5,8 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
 
-    field :products, resolver: Queries::Products, description: 'Returns array of products'
+    field :all_products, resolver: Queries::AllProducts, description: 'Returns array of products'
+    field :promoted_products, resolver: Queries::PromotedProducts, description: 'Returns array of promoted products'
     field :opinions, resolver: Queries::Opinions, description: 'Returns array of opinions'
   end
 end

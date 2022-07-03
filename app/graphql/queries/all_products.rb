@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class Products < BaseQuery
+  class AllProducts < BaseQuery
     type [Types::Custom::Product], null: false
 
     def resolve

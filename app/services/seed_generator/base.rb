@@ -15,7 +15,7 @@ module SeedGenerator
     private
   
     def workbook
-      RubyXL::Parser.parse("app/services/seed_generator/Seeds (1).xlsx")
+      RubyXL::Parser.parse("app/services/seed_generator/Seeds.xlsx")
     end
   
     def work_sheet_name

@@ -21,7 +21,7 @@ module SeedGenerator
           if product_cathegory_column?(c)
             properties_hash[:product_cathegory_id] = product_cathegory_id(row_number: r, column_number: c)
           else
-            column_value = @work_sheet[r + 1][c].value
+            column_value = @work_sheet[r + 1][c]&.value
             column_name = @work_sheet[0][c].value
             properties_hash[column_name] = column_value
           end
