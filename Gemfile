@@ -35,6 +35,8 @@ gem 'aws-sdk-s3', '~> 1.112'
 gem 'graphql'
 # to log errors
 gem 'rollbar'
+# to process exel files
+gem 'rubyXL'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
