@@ -37,6 +37,8 @@ gem 'graphql'
 gem 'rollbar'
 # to process exel files
 gem 'rubyXL'
+# to generate token
+gem 'jwt'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

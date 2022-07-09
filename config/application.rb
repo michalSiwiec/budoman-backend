@@ -20,7 +20,9 @@ Bundler.require(*Rails.groups)
 module OlxBackend
   class Application < Rails::Application
     config.load_defaults 5.2
-    config.api_only = true
+    config.api_only = false
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
     config.aws_path = 's3.eu-central-1.amazonaws.com'
   end
 end
