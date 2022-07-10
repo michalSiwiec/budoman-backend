@@ -3,7 +3,7 @@
 module Types
   module Custom
     module Inputs
-      class UserAuthenticationInput < Types::BaseInputObject
+      class LoginUserInput < Types::BaseInputObject
         argument :email, String, required: true
         argument :password, String, required: true
       end
