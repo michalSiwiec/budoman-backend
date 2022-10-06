@@ -17,7 +17,7 @@ module Aws
       end
 
       def path
-        "#{@user_id}/#{@payload[:file_name]}"
+        "users/#{@user_id}/#{@payload[:file_name]}"
       end
 
       def avatar_details
