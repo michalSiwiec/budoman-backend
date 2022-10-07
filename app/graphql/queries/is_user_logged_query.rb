@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class IsUserLogged < BaseQuery
+  class IsUserLoggedQuery < BaseQuery
     type Types::Custom::IsUserLogged, null: false
 
     def resolve

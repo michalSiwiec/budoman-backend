@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Queries
-  class Opinions < BaseQuery
+  class OpinionsQuery < BaseQuery
     type [Types::Custom::Opinion], null: false
 
     def resolve
