@@ -10,4 +10,5 @@ TODO
 9) Maby I have to add null: false to migration - using models I haven't got validation from postgres (only from rails)
 10) Remove namespace graphql - it's wired
 11) Refactor register logic
-
+12) FindOrCreate by in Seeds
+13) Change Services name to have suffix _service to be aggred with ruby_way
