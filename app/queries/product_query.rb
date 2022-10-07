@@ -5,6 +5,7 @@ class ProductQuery
   end
 
   def call
+    filter_by_type_if_needed
     @products
   end
 
@@ -14,5 +15,11 @@ class ProductQuery
     return Product.promoted if @params[:promoted]
 
     Product.all
+  end
+
+  def filter_by_type_if_needed
+    return unless @params[:type]
+
+    @products = Product.from_type(@params[:type].underscore)
   end
 end

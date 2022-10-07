@@ -1,6 +1,8 @@
 module Queries
   class ProductsQuery < BaseQuery
     argument :promoted, Boolean, required: false
+    argument :type, String, required: false
+
     type [Types::Custom::Product], null: false
 
     def resolve(params)
