@@ -6,6 +6,7 @@ class ProductQuery
 
   def call
     filter_by_type_if_needed
+    sort_by_price
     @products
   end
 
@@ -21,5 +22,9 @@ class ProductQuery
     return unless @params[:type]
 
     @products = Product.from_type(@params[:type].underscore)
+  end
+
+  def sort_by_price
+    @products = @products.order(:price)
   end
 end
