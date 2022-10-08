@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductQuery
   def initialize(params)
     @params = params[:input].to_h
