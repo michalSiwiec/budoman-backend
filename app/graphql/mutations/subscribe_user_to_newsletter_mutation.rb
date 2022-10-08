@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class SubscribeUserToNewsletter < BaseMutation
+  class SubscribeUserToNewsletterMutation < BaseMutation
     argument :email, String, required: true
     type Types::Custom::User
 

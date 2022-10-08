@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class AddOpinion < BaseMutation
+  class AddOpinionMutation < BaseMutation
     argument :input, Types::Custom::Inputs::OpinionInput, required: true
     type Types::Custom::Opinion
 

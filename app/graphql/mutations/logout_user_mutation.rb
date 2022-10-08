@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class LogoutUser < Mutations::BaseMutation
+  class LogoutUserMutation < Mutations::BaseMutation
     argument :input, Types::Custom::Inputs::LogoutUserInput, required: true
     type Types::Custom::User
 

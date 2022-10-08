@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Mutations
-  class RegisterUser < Mutations::BaseMutation
+  class RegisterUserMutation < Mutations::BaseMutation
     argument :input, Types::Custom::Inputs::UserInput, required: true
     type Types::Custom::User
 
