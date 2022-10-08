@@ -3,7 +3,7 @@
 module Mutations
   class LogoutUserMutation < Mutations::BaseMutation
     argument :input, Types::Custom::Inputs::LogoutUserInput, required: true
-    type Types::Custom::User
+    type Types::Custom::Objects::UserObject
 
     def resolve(params)
       super(params)

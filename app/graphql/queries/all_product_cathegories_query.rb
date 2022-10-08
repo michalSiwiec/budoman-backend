@@ -2,7 +2,7 @@
 
 module Queries
   class AllProductCathegoriesQuery < BaseQuery
-    type [Types::Custom::ProductCathegory], null: false
+    type [Types::Custom::Objects::ProductCathegoryObject], null: false
 
     def resolve
       ProductCathegory.all
