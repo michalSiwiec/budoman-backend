@@ -12,3 +12,4 @@ TODO
 11) Refactor register logic
 12) FindOrCreate by in Seeds
 13) Change Services name to have suffix _service to be aggred with ruby_way
+14) Find difference between object inputs enums scalars, and one more things and move objects to objects directory

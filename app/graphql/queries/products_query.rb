@@ -1,17 +1,13 @@
 module Queries
   class ProductsQuery < BaseQuery
-    argument :promoted, Boolean, required: false
-    argument :type, String, required: false
-
-    type [Types::Custom::Product], null: false
+    argument :input, Types::Custom::Inputs::Filtrations::ProductInput, required: false
+    type Types::Custom::Objects::Products::ProductWithAllQuantityObject, null: false
 
     def resolve(params)
-      ProductQuery.new(params).call
+      {
+        products: ProductQuery.new(params).call,
+        all_products_quantity: Product.count
+      }
     end
   end
 end
-
-# Kategoria
-# Paginacja
-# Promowane
-# Sortowane
