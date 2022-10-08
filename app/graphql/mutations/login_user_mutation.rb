@@ -2,7 +2,7 @@
 
 module Mutations
   class LoginUserMutation < Mutations::BaseMutation
-    argument :input, Types::Custom::Inputs::LoginUserInput, required: true
+    argument :input, Types::Custom::Inputs::Mutations::LoginUserInput, required: true
     type Types::Custom::Objects::UserObject
 
     def resolve(params)
