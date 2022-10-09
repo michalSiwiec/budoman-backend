@@ -1,13 +1,10 @@
 module Queries
   class ProductsQuery < BaseQuery
     argument :input, Types::Custom::Inputs::Filtrations::ProductInput, required: false
-    type Types::Custom::Objects::Products::ProductWithAllQuantityObject, null: false
+    type Types::Custom::Objects::Products::ProductsWithQuantityObject, null: false
 
     def resolve(params)
-      {
-        products: ProductQuery.new(params).call,
-        all_products_quantity: Product.count
-      }
+      ProductQuery.new(params).call
     end
   end
 end

@@ -7,7 +7,7 @@ module Types
         class ProductInput < Types::BaseInputObject
           argument :promoted, Boolean, required: false
           argument :type, String, required: false
-          argument :pagination, PaginationInput, required: false
+          argument :pagination, PaginationInput, required: true
         end
       end
     end

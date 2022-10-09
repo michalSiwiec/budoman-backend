@@ -8,9 +8,10 @@ class ProductQuery
 
   def call
     filter_by_type_if_needed
+    count_records
     paginate
     sort_by_price
-    @products
+    response
   end
 
   private
@@ -27,6 +28,10 @@ class ProductQuery
     @products = Product.from_type(@params[:type].underscore)
   end
 
+  def count_records
+    @records_quantity = @products.count
+  end
+
   def paginate
     page = @params.dig(:pagination, :page)
     quantity_per_page = @params.dig(:pagination, :quantity_per_page)
@@ -36,5 +41,9 @@ class ProductQuery
 
   def sort_by_price
     @products = @products.order(:price)
+  end
+
+  def response
+    { products: @products, quantity: @records_quantity }
   end
 end
