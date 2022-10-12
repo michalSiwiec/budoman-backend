@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_12_092236) do
+ActiveRecord::Schema.define(version: 2022_10_12_152836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2022_10_12_092236) do
     t.uuid "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_quantity"
     t.index ["order_id"], name: "index_products_orders_on_order_id"
     t.index ["product_id"], name: "index_products_orders_on_product_id"
   end
