@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_03_125210) do
+ActiveRecord::Schema.define(version: 2022_10_12_092236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -23,6 +23,21 @@ ActiveRecord::Schema.define(version: 2022_07_03_125210) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_opinions_on_user_id"
+  end
+
+  create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.string "phone_number"
+    t.string "street"
+    t.string "city"
+    t.string "postal_code"
+    t.string "delivery_method"
+    t.string "payment_method"
+    t.uuid "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "product_cathegories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -44,6 +59,15 @@ ActiveRecord::Schema.define(version: 2022_07_03_125210) do
     t.index ["product_cathegory_id"], name: "index_products_on_product_cathegory_id"
   end
 
+  create_table "products_orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "order_id"
+    t.uuid "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_products_orders_on_order_id"
+    t.index ["product_id"], name: "index_products_orders_on_product_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email"
     t.string "password"
@@ -53,5 +77,8 @@ ActiveRecord::Schema.define(version: 2022_07_03_125210) do
   end
 
   add_foreign_key "opinions", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "product_cathegories"
+  add_foreign_key "products_orders", "orders"
+  add_foreign_key "products_orders", "products"
 end

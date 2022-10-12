@@ -11,4 +11,5 @@ class User < ApplicationRecord
   validates_with UserValidator, fields: [:avatars]
 
   has_many :opinions
+  has_many :orders
 end
