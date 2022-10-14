@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BaseBuilder
-  def self.handle(*args)
+  def self.build(*args)
     new(*args).build
   end
 end

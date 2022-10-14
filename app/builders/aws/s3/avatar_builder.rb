@@ -3,31 +3,41 @@
 module Aws
   module S3
     class AvatarBuilder
-      attr_reader :bucket
+      attr_writer :avatar
 
-      def initialize(payload:, id:)
-        @aws_path = Rails.application.config.aws_path
-        @bucket = Rails.application.config.aws_bucket
-        @payload = payload
-        @user_id = id
+      def initialize(user_id)
+        @user_id = user_id
       end
 
-      def base64
-        Base64.decode64(@payload[:base64].split(',').second)
-      end
-
-      def path
-        "users/#{@user_id}/#{@payload[:file_name]}"
-      end
-
-      def avatar_details
-        { main: @payload[:main], storage_path: full_path }
+      def build
+        {
+          base64: base64,
+          path: path,
+          bucket: config.aws_bucket,
+          details: details
+        }
       end
 
       private
 
+      def base64
+        Base64.decode64(@avatar[:base64].split(',').second)
+      end
+
+      def path
+        "users/#{@user_id}/avatars/#{@avatar[:file_name]}"
+      end
+
+      def details
+        { main: @avatar[:main], storage_path: full_path }
+      end
+
       def full_path
-        "https://#{bucket}.#{@aws_path}/#{path}"
+        "https://#{config.aws_bucket}.#{config.aws_path}/#{path}"
+      end
+
+      def config
+        @config ||= Rails.application.config
       end
     end
   end
