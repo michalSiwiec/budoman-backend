@@ -39,6 +39,9 @@ gem 'rollbar'
 gem 'rubyXL'
 # to generate token
 gem 'jwt'
+# to generate pdf
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

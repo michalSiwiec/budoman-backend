@@ -15,10 +15,11 @@ module Graphql
     private
 
     def create_order
-      @order ||= Order.create!(@params)
+      @order = Order.create!(@params)
     end
 
     def generate_invoice
+      Aws::S3::InvoiceUploaderService.call(@order)
     end
   end
 end
