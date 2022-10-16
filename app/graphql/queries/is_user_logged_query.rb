@@ -5,7 +5,7 @@ module Queries
     type Types::Custom::Objects::IsUserLoggedObject, null: false
 
     def resolve
-      { is_logged: context[:current_user].present? }
+      { user_id: context[:current_user]&.id }
     end
   end
 end

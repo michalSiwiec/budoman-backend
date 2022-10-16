@@ -16,7 +16,7 @@ module Graphql
     private
 
     def logout_user
-      @session[:token] = nil
+      @session[:user_token] = nil
     end
 
     def user

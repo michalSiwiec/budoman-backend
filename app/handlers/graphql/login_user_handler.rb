@@ -9,22 +9,22 @@ module Graphql
     end
 
     def handle
-      save_token_to_session
+      save_user_token_to_session
       user
     end
 
     private
 
+    def save_user_token_to_session
+      @session[:user_token] = user_token
+    end
+
+    def user_token
+      JWT.encode(user.id, nil, 'none')
+    end
+
     def user
       @user ||= User.find_by!(@params)
-    end
-
-    def token
-      @token ||= JWT.encode(user.id, nil, 'none')
-    end
-
-    def save_token_to_session
-      @session[:token] = token
     end
   end
 end

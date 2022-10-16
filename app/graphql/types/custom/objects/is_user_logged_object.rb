@@ -4,7 +4,7 @@ module Types
   module Custom
     module Objects
       class IsUserLoggedObject < Types::BaseObject
-        field :is_logged, Boolean, null: false
+        field :user_id, ID, null: true
       end
     end
   end

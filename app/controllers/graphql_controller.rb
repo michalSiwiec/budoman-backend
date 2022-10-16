@@ -19,9 +19,9 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    return unless session[:token]
+    return unless session[:user_token]
 
-    user_id = JWT.decode(session[:token], nil, false).first
+    user_id = JWT.decode(session[:user_token], nil, false).first
     User.find(user_id)
   end
 
