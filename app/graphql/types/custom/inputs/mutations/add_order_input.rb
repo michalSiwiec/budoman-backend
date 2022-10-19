@@ -7,6 +7,7 @@ module Types
         class AddOrderInput < Types::BaseInputObject
           argument :name, String, required: true
           argument :surname, String, required: true
+          argument :email, String, required: true
           argument :phone_number, String, required: true
           argument :street, String, required: true
           argument :city, String, required: true
