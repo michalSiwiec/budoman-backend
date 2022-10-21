@@ -55,8 +55,6 @@ class OrderPresenter
   end
 
   def total_price
-    sum = 0
-    products_details.each { |product_detail| sum += product_detail[:price] * product_detail[:quantity] }
-    sum
+    @order.total_price
   end
 end
