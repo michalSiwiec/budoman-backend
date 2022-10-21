@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  ALLOWED_DELIVERY_METHOD = %w[in_post dpd at_the_point]
+  ALLOWED_DELIVERY_METHOD = %w[in_post dpd pick_up_at_the_point]
   ALLOWED_PAYMENT_METHOD = %w[traditional_transfer cash_on_delivery]
   PHONE_NUMBER_REGEX = /\A[0-9]{9}\z/
   
