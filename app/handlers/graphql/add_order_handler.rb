@@ -3,7 +3,8 @@
 module Graphql
   class AddOrderHandler < BaseHandler
     def initialize(params)
-      @params = params
+      @order_params = params.except(:products_order)
+      @products_order_params = params[:products_order]
     end
 
     def handle
@@ -15,7 +16,11 @@ module Graphql
     private
 
     def create_order
-      @order = Order.create!(@params)
+      @order ||= Order.new(@order_params)
+      @products_order_params.each do |product_order_params|
+        @order.products_orders << ProductsOrder.new(product_order_params)
+      end
+      @order.save!
     end
 
     def generate_invoice

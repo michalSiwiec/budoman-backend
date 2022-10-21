@@ -15,6 +15,7 @@ module Types
           argument :delivery_method, Types::Custom::Enums::DeliveryMethodEnum, required: true
           argument :payment_method, Types::Custom::Enums::PaymentMethodEnum, required: true
           argument :user_id, ID, required: true
+          argument :products_order, [Types::Custom::Inputs::Mutations::ProductsOrderInput], required: true
         end
       end
     end
