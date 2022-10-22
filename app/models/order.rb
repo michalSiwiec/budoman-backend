@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Order < ApplicationRecord
-  ALLOWED_DELIVERY_METHOD = %w[in_post dpd pick_up_at_the_point]
-  ALLOWED_PAYMENT_METHOD = %w[cash_payment traditional_transfer]
-  PHONE_NUMBER_REGEX = /\A[0-9]{9}\z/
-  
+  ALLOWED_DELIVERY_METHOD = %w[in_post dpd pick_up_at_the_point].freeze
+  ALLOWED_PAYMENT_METHOD = %w[cash_payment traditional_transfer].freeze
+  PHONE_NUMBER_REGEX = /\A[0-9]{9}\z/.freeze
+
   belongs_to :user
   has_many :products_orders
 
@@ -12,7 +14,7 @@ class Order < ApplicationRecord
 
   def total_price
     sum = 0
-    self.products_orders.each { |product_order| sum += product_order.product_quantity * product_order.product.price }
+    products_orders.each { |product_order| sum += product_order.product_quantity * product_order.product.price }
     sum
   end
 end

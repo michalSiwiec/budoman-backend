@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
   belongs_to :product_cathegory
   has_many :products_orders

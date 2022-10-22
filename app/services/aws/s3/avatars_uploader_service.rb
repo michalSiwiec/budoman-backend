@@ -33,7 +33,7 @@ module Aws
 
       def upload_to_aws
         @aws_client.put_object(
-          body: @payload[:base64], 
+          body: @payload[:base64],
           bucket: @payload[:bucket],
           key: @payload[:path]
         )

@@ -2,6 +2,7 @@
 
 class AddOpinionHandler < BaseHandler
   def initialize(params)
+    super()
     @params = params
   end
 

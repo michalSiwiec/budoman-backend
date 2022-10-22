@@ -4,6 +4,7 @@ module Aws
   module S3
     class InvoiceBuilder < BaseBuilder
       def initialize(order)
+        super()
         @order = order
       end
 

@@ -20,3 +20,8 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Exclude:
     - app/validators/user_validator.rb
+    - db/migrate/20221012092230_create_orders.rb
+    - app/services/seed_generator/users.rb
+    - app/services/seed_generator/products.rb
+    - app/services/seed_generator/product_cathegories.rb
+    - app/services/seed_generator/opinions.rb

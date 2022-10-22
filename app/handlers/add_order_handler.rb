@@ -2,6 +2,7 @@
 
 class AddOrderHandler < BaseHandler
   def initialize(params)
+    super()
     @order_params = params.except(:products_order)
     @products_order_params = params[:products_order]
   end

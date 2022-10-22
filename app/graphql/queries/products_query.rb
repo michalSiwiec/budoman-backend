@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Queries
   class ProductsQuery < BaseQuery
     argument :input, Types::Custom::Inputs::Filtrations::ProductInput, required: false
