@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      Graphql::AddOrderHandler.handle(@params)
+      AddOrderHandler.handle(@params)
     end
   end
 end

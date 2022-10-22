@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      Graphql::LogoutUserHandler.handle(params: @params, session: context[:session])
+      LogoutUserHandler.handle(params: @params, session: context[:session])
     end
   end
 end

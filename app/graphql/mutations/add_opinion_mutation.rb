@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      Graphql::AddOpinionHandler.handle(@params)
+      AddOpinionHandler.handle(@params)
     end
   end
 end

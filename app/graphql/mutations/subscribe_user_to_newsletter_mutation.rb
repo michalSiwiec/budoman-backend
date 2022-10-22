@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      Graphql::SubscribeUserToNewsletterHandler.handle(@params)
+      SubscribeUserToNewsletterHandler.handle(@params)
     end
   end
 end
