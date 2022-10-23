@@ -18,5 +18,6 @@ module Types
           description: 'Returns array fo products cathegories'
 
     field :opinions, resolver: Queries::OpinionsQuery, description: 'Returns array of opinions'
+    field :orders, resolver: Queries::OrdersQuery, description: 'Returns array of order'
   end
 end

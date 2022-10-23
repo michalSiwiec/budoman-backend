@@ -3,7 +3,7 @@
 module Mutations
   class AddOrderMutation < Mutations::BaseMutation
     argument :input, Types::Custom::Inputs::Mutations::AddOrderInput, required: true
-    type Types::Custom::Objects::OrderObject
+    type Types::Custom::Objects::Orders::OrderObject
 
     def resolve(params)
       super(params)
