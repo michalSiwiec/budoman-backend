@@ -18,6 +18,10 @@ module Types
           mutation: Mutations::SubscribeUserToNewsletterMutation,
           description: 'Save user to newsletter'
 
+    field :change_user_password,
+          mutation: Mutations::ChangeUserPasswordMutation,
+          description: "Change user's password"
+
     field :add_opinion,
           mutation: Mutations::AddOpinionMutation,
           description: "Add user's opinion"

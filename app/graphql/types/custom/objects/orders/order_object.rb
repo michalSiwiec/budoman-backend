@@ -15,6 +15,7 @@ module Types
           field :delivery_method, Types::Custom::Enums::DeliveryMethodEnum, null: false
           field :payment_method, Types::Custom::Enums::PaymentMethodEnum, null: false
           field :total_price, Float, null: false
+          field :created_at, GraphQL::Types::ISO8601DateTime, null: false
 
           def total_price
             object.total_price
