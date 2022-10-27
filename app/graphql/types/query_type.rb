@@ -15,7 +15,7 @@ module Types
 
     field :user,
           resolver: Queries::UserQuery,
-          description: "Returns user"
+          description: 'Returns user'
 
     field :products_cathegories,
           resolver: Queries::AllProductCathegoriesQuery,
