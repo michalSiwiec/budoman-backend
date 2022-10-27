@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_19_124706) do
+ActiveRecord::Schema.define(version: 2022_10_27_192425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -76,6 +76,12 @@ ActiveRecord::Schema.define(version: 2022_10_19_124706) do
     t.hstore "avatars", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "surname"
+    t.string "phone_number"
+    t.string "street"
+    t.string "city"
+    t.string "postal_code"
   end
 
   add_foreign_key "opinions", "users"

@@ -13,11 +13,20 @@ module Types
           resolver: Queries::IsUserLoggedQuery,
           description: "Returns info if user's session is present"
 
+    field :user,
+          resolver: Queries::UserQuery,
+          description: "Returns user"
+
     field :products_cathegories,
           resolver: Queries::AllProductCathegoriesQuery,
           description: 'Returns array fo products cathegories'
 
-    field :opinions, resolver: Queries::OpinionsQuery, description: 'Returns array of opinions'
-    field :orders, resolver: Queries::OrdersQuery, description: 'Returns array of order'
+    field :opinions,
+          resolver: Queries::OpinionsQuery,
+          description: 'Returns array of opinions'
+
+    field :orders,
+          resolver: Queries::OrdersQuery,
+          description: 'Returns array of order'
   end
 end
