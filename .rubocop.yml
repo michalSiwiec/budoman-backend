@@ -25,3 +25,14 @@ Metrics/MethodLength:
     - app/services/seed_generator/products.rb
     - app/services/seed_generator/product_cathegories.rb
     - app/services/seed_generator/opinions.rb
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - bin/bundle
+    - bin/rails
+    - bin/rake
+    - bin/setup
+    - bin/update
+Style/MixinUsage:
+  Exclude:
+    - bin/setup
+    - bin/update

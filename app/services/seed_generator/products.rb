@@ -4,40 +4,56 @@ module SeedGenerator
   class Products < Base
     private
 
-    def work_sheet_name
-      'Products'
-    end
+    SHEET_NAME = 'Products'
+    MODEL = Product
 
-    def model
-      Product
-    end
+    def generate_records_attributes
+      records_attributes = []
 
-    def generate_records_properties
-      records_properties = []
-      @row_size.times do |r|
-        properties_hash = {}
+      rows_quantity.times do |row_number|
+        attributes = {}
+        @row_number = row_number
 
-        @column_size.times do |c|
-          if product_cathegory_column?(c)
-            properties_hash[:product_cathegory_id] = product_cathegory_id(row_number: r, column_number: c)
-          else
-            column_value = @work_sheet[r + 1][c]&.value
-            column_name = @work_sheet[0][c].value
-            properties_hash[column_name] = column_value
-          end
+        column_quantity.times do |column_number|
+          @column_number = column_number
+          attributes[column_name] = column_value
         end
-        records_properties << properties_hash
+
+        records_attributes << attributes
       end
-      records_properties
+
+      records_attributes
     end
 
-    def product_cathegory_column?(column_number)
-      column_number == 4
+    def column_name
+      @work_sheet[COLUMN_NAME_ROW_INDEX][@column_number].value
     end
 
-    def product_cathegory_id(row_number:, column_number:)
-      product_cathegory_name = @work_sheet[row_number + 1][column_number].value
-      ProductCathegory.find_by(name: product_cathegory_name).id
+    def column_value
+      return product_cathegory_id if product_cathegory_column?
+      return available_quantity if available_quantity_column?
+
+      column_content
+    end
+
+    def product_cathegory_id
+      ProductCathegory.find_by(name: column_content).id
+    end
+
+    def product_cathegory_column?
+      @column_number == 4
+    end
+
+    def available_quantity
+      column_content.to_i
+    end
+
+    def available_quantity_column?
+      @column_number == 2
+    end
+
+    def column_content
+      @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number]&.value
     end
   end
 end

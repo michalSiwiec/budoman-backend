@@ -4,27 +4,33 @@ module SeedGenerator
   class ProductCathegories < Base
     private
 
-    def work_sheet_name
-      'ProductsCathegories'
-    end
+    SHEET_NAME = 'ProductsCathegories'
+    MODEL = ProductCathegory
 
-    def model
-      ProductCathegory
-    end
+    def generate_records_attributes
+      records_attributes = []
 
-    def generate_records_properties
-      records_properties = []
-      @row_size.times do |r|
-        properties_hash = {}
+      rows_quantity.times do |row_number|
+        attributes = {}
+        @row_number = row_number
 
-        @column_size.times do |c|
-          column_value = @work_sheet[r + 1][c].value
-          column_name = @work_sheet[0][c].value
-          properties_hash[column_name] = column_value
+        column_quantity.times do |column_number|
+          @column_number = column_number
+          attributes[column_name] = column_value
         end
-        records_properties << properties_hash
+
+        records_attributes << attributes
       end
-      records_properties
+
+      records_attributes
+    end
+
+    def column_name
+      @work_sheet[COLUMN_NAME_ROW_INDEX][@column_number].value
+    end
+
+    def column_value
+      @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number].value
     end
   end
 end

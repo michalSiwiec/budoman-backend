@@ -2,39 +2,49 @@
 
 module SeedGenerator
   class Opinions < Base
-    def work_sheet_name
-      'Opinions'
-    end
+    private
 
-    def model
-      Opinion
-    end
+    SHEET_NAME = 'Opinions'
+    MODEL = Opinion
 
-    def generate_records_properties
-      records_properties = []
-      @row_size.times do |r|
-        properties_hash = {}
-        @column_size.times do |c|
-          if user_column?(c)
-            properties_hash[:user_id] = user_id(row_number: r, column_number: c)
-          else
-            column_name = @work_sheet[0][c].value
-            column_value = @work_sheet[r + 1][c].value
-            properties_hash[column_name] = column_value
-          end
+    def generate_records_attributes
+      records_attributes = []
+
+      rows_quantity.times do |row_number|
+        attributes = {}
+        @row_number = row_number
+
+        column_quantity.times do |column_number|
+          @column_number = column_number
+          attributes[column_name] = column_value
         end
-        records_properties << properties_hash
+
+        records_attributes << attributes
       end
-      records_properties
+
+      records_attributes
     end
 
-    def user_column?(column_number)
-      column_number == 2
+    def column_name
+      @work_sheet[COLUMN_NAME_ROW_INDEX][@column_number].value
     end
 
-    def user_id(row_number:, column_number:)
-      user_email = @work_sheet[row_number + 1][column_number].value
-      User.find_by(email: user_email).id
+    def column_value
+      return user_id if user_column?
+
+      column_content
+    end
+
+    def user_id
+      User.find_by(email: column_content).id
+    end
+
+    def column_content
+      @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number].value
+    end
+
+    def user_column?
+      @column_number == 2
     end
   end
 end
