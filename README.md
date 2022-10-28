@@ -15,3 +15,4 @@ TODO
 14) Find difference between object inputs enums scalars, and one more things and move objects to objects directory
 16) Czy email oraz numer mieszkania nie powinien był rowniez w tabeli order?
 # Czy to nie powinno dzialac tak ze ja definiuje jeden typ products do ktorego wrzucam wszystko i z frontu wybieram co ma zostac zwrocone?
+17) Zmien nazwy plikow w folderze mutation/types
