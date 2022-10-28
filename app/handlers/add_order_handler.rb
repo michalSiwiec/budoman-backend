@@ -8,19 +8,37 @@ class AddOrderHandler < BaseHandler
   end
 
   def handle
-    create_order
+    handle_order_creation
     generate_invoice
     @order
   end
 
   private
 
+  def handle_order_creation
+    create_order
+    create_order_products
+    update_products_quantities
+    @order.save!
+  end
+
   def create_order
-    @order ||= Order.new(@order_params)
+    @order = Order.new(@order_params)
+  end
+
+  def create_order_products
     @products_order_params.each do |product_order_params|
       @order.products_orders << ProductsOrder.new(product_order_params)
     end
-    @order.save!
+  end
+
+  def update_products_quantities
+    @order.products_orders.each do |product_order|
+      product = product_order.product
+      ordered_quantity = product_order.product_quantity
+
+      product.update!(available_quantity: product.available_quantity - ordered_quantity)
+    end
   end
 
   def generate_invoice

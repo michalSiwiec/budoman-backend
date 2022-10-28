@@ -8,6 +8,7 @@ class ProductQuery
 
   def call
     filter_by_type_if_needed
+    filter_by_availability
     count_records
     paginate
     sort_by_price
@@ -26,6 +27,10 @@ class ProductQuery
     return unless @params[:type]
 
     @products = Product.from_type(@params[:type].underscore)
+  end
+
+  def filter_by_availability
+    @products = @products.where('available_quantity > ?', 0)
   end
 
   def count_records
