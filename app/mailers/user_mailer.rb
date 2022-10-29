@@ -2,7 +2,7 @@
 
 class UserMailer < ApplicationMailer
   def registration_email
-    @user = User.last
-    mail(to: @user.email, subject: 'Dziękujemy za rejestrację w naszym serwisie!').deliver
+    @user = params[:user]
+    mail(to: @user.email, subject: 'Dziękujemy za rejestrację w naszym serwisie!')
   end
 end
