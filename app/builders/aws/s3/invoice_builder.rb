@@ -31,11 +31,11 @@ module Aws
       end
 
       def pdf_html
-        ActionController::Base.new.render_to_string(file: layout_path, locals: { presenter: presenter })
+        ActionController::Base.new.render_to_string(file: invoice_view, locals: { presenter: presenter })
       end
 
-      def layout_path
-        'app/views/layouts/invoice.html.erb'
+      def invoice_view
+        'app/views/invoice.html.erb'
       end
 
       def presenter
