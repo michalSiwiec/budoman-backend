@@ -42,6 +42,8 @@ gem 'jwt'
 # to generate pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+# to work with crontab
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

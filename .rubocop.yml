@@ -36,3 +36,6 @@ Style/MixinUsage:
   Exclude:
     - bin/setup
     - bin/update
+Style/HashSyntax:
+  Exclude:
+    - lib/tasks/send_newsletter.rake
