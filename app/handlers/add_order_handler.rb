@@ -10,6 +10,7 @@ class AddOrderHandler < BaseHandler
   def handle
     handle_order_creation
     generate_invoice
+    send_order_email
     @order
   end
 
@@ -43,5 +44,9 @@ class AddOrderHandler < BaseHandler
 
   def generate_invoice
     Aws::S3::InvoiceUploaderService.call(@order)
+  end
+
+  def send_order_email
+    OrderMailer.with(order: @order).order_created.deliver_later
   end
 end
