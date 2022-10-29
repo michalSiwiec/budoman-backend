@@ -32,9 +32,7 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.aws_bucket = 'olx-development'
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+  # For mailers
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.

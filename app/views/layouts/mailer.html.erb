@@ -3,11 +3,42 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      a {
+        color: black !important;
+        text-decoration: none;
+      }
+
+      /* -----------REGISTRATION MAIL------------------------------- */
+      .auth-label {
+        font-weight: bold;
+      }
+
+      .auth-value {
+        font-weight: normal;
+        text-decoration: none;
+      }
+      /* -----------REGISTRATION MAIL------------------------------- */
+
+      .thanks-paragraph {
+        font-weight: bold;
+      }
+
+      .info-paragraph {
+        opacity: .5;
+        font-size: 14px;
+      }
     </style>
   </head>
 
   <body>
     <%= yield %>
+    <div class="footer">
+      <p class="thanks-paragraph">Życzymy miłego dnia oraz przyjemności z korzystania z naszego serwisu!</p>
+      <p class="info-paragraph">
+        Adres siedziby: ul. Przykładowa 5, 00-000 Warszawa, 3 piętro.<br />
+        Marka Budoman, zarejestrowana w Sądzie Rejonowym dla m. st. Warszawy, XIII Wydział Gospodarczy Krajowego Rejestru Sądowego KRS xxxxxxxxx, Numer NIP xxxxxxxxx, Kapitał zakładowy 200 000 PLN.
+        <br />Niniejsza wiadomość może zawierać informacje prywatne lub poufne.<br />Jeśli nie jesteś adresatem tej wiadomości, uprzejmie prosimy o jak najszybsze usunięcie jej i zawiadomienie wysyłającego, gdyż zgodnie z prawem jej przeglądanie, rozpowszechnianie lub też powielanie jest zabronione.
+      </p>
+    </div>
   </body>
 </html>
