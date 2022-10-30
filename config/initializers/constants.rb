@@ -13,3 +13,7 @@ PRODUCT_CATHEGORIES_NAMES = {
   stairway: 'Schody',
   tools: 'Narzędzia'
 }.freeze
+
+REGEX = {
+  email: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+}.freeze
