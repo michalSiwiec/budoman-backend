@@ -2,5 +2,5 @@
 
 desc 'Sends newsletter to required users'
 task :send_newsletter => [:environment] do
-  User.last.update(name: 'TEST VALUE')
+  [User.last].each { |user| UserMailer.with(user: user).newsletter.deliver_now }
 end
