@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   end
 
   def newsletter
-    @user = params[:user]
+    @newsletter = params[:newsletter]
 
     attach_presentation
     send_newsletter_mail
@@ -32,6 +32,6 @@ class UserMailer < ApplicationMailer
   end
 
   def send_newsletter_mail
-    mail(to: @user.email, subject: 'Cotygodniowy newsletter!')
+    mail(to: @newsletter.email, subject: 'Cotygodniowy newsletter!')
   end
 end
