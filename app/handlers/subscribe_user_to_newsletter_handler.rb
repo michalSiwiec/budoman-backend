@@ -7,6 +7,6 @@ class SubscribeUserToNewsletterHandler < BaseHandler
   end
 
   def handle
-    User.last
+    Newsletter.create!(@params)
   end
 end
