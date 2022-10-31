@@ -14,6 +14,11 @@ module Types
         field :street, String, null: true
         field :city, String, null: true
         field :postal_code, String, null: true
+        field :saved_to_newsletter, Boolean, null: false
+
+        def saved_to_newsletter
+          Newsletter.find_by(email: object.email).present?
+        end
       end
     end
   end
