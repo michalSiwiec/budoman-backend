@@ -18,6 +18,10 @@ module Types
           mutation: Mutations::SubscribeUserToNewsletterMutation,
           description: 'Save user to newsletter'
 
+    field :unsubscribe_user_from_newsletter,
+          mutation: Mutations::UnsubscribeUserFromNewsletterMutation,
+          description: 'Remove user from newsletter'
+
     field :change_user_password,
           mutation: Mutations::ChangeUserPasswordMutation,
           description: "Change user's password"
