@@ -35,8 +35,8 @@ module OlxBackend
       port: 587,
       domain: 'mail.google.com',
       user_name: 'siwiec.michal724@gmail.com',
-      password: Rails.application.credentials.dig(:smtp, :password),
-      authentication: Rails.application.credentials.dig(:smtp, :authentication),
+      password: ENV['SMTP_PASSWORD'],
+      authentication: ENV['SMTP_AUTHENTICATION'],
       enable_starttls_auto: true,
     }
   end

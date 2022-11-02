@@ -44,6 +44,8 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 # to work with crontab
 gem 'whenever', require: false
+# to work with env variables
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
