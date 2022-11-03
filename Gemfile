@@ -46,6 +46,8 @@ gem 'wkhtmltopdf-binary'
 gem 'whenever', require: false
 # to work with env variables
 gem 'dotenv-rails'
+# to fix session on heroku
+gem 'rails_same_site_cookie'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
