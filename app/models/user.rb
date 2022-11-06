@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   PASSWORD = /\A(?=.*\d)(?=.*([a-z]|[A-Z]))([\x20-\x7E]){8,40}\z/i.freeze
 
+  has_secure_password
+
   validates :email,
             uniqueness: { message: 'is already taken!' },
             format: { with: REGEX[:email], message: 'has incorrect format!' }

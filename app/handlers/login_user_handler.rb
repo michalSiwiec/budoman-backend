@@ -23,6 +23,6 @@ class LoginUserHandler < BaseHandler
   end
 
   def user
-    @user ||= User.find_by!(@params)
+    @user ||= User.find_by!(email: @params[:email]).authenticate(@params[:password])
   end
 end

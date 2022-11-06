@@ -37,6 +37,7 @@ class RegisterUserHandler < BaseHandler
   end
 
   def send_registration_mail
-    UserMailer.with(user: @user).account_registered.deliver_later
+    UserMailer.with(email: @params[:email],
+                    password: @params[:password]).account_registered.deliver_later
   end
 end

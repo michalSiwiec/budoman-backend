@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_30_184614) do
+ActiveRecord::Schema.define(version: 2022_11_06_204317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 2022_10_30_184614) do
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "email"
-    t.string "password"
+    t.string "password_digest"
     t.hstore "avatars", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
