@@ -9,8 +9,8 @@ class User < ApplicationRecord
             uniqueness: { message: 'is already taken!' },
             format: { with: REGEX[:email], message: 'has incorrect format!' }
 
-  validates :password,
-            format: { with: PASSWORD, message: 'must be at least 6 characters and include one number and one letter.' }
+  # validates :password, format: { with: PASSWORD,
+  #                                message: 'must be at least 6 characters and include one number and one letter.' }
 
   validates_with UserValidator, fields: [:avatars]
 
