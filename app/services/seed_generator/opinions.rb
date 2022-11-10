@@ -36,7 +36,7 @@ module SeedGenerator
     end
 
     def user_id
-      User.find_by(email: column_content).id
+      User.find_by!(email: column_content).id
     end
 
     def column_content

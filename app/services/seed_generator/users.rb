@@ -7,6 +7,15 @@ module SeedGenerator
     SHEET_NAME = 'Users'
     MODEL = User
 
+    def create_records
+      generate_records_attributes.each do |attr|
+        user = User.find_by(email: attr['email'])
+        next if user
+
+        User.create!(attr)
+      end
+    end
+
     def generate_records_attributes
       records_properties = []
 
