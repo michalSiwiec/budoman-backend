@@ -1,22 +1,24 @@
 # frozen_string_literal: true
 
 class RegisterUserHandler < BaseHandler
-  def initialize(params)
+  def initialize(params:, session:)
     super()
     @params = params
+    @session = session
   end
 
   def handle
-    create_user
+    user
     handle_avatars_creation
     send_registration_mail
-    @user
+    login_user
+    user
   end
 
   private
 
-  def create_user
-    @user = User.create!(user_params)
+  def user
+    @user ||= User.create!(user_params)
   end
 
   def user_params
@@ -29,15 +31,19 @@ class RegisterUserHandler < BaseHandler
   end
 
   def save_avatars_on_aws
-    @uploaded_avatars_details = Aws::S3::AvatarsUploaderService.call(avatars: @params[:avatars], user_id: @user.id)
+    @uploaded_avatars_details = Aws::S3::AvatarsUploaderService.call(avatars: @params[:avatars], user_id: user.id)
   end
 
   def update_user_avatars
-    @user.update!(avatars: @uploaded_avatars_details)
+    user.update!(avatars: @uploaded_avatars_details)
   end
 
   def send_registration_mail
     UserMailer.with(email: @params[:email],
                     password: @params[:password]).account_registered.deliver_later
+  end
+
+  def login_user
+    SessionUserService.new(user: user, session: @session).login
   end
 end

@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      RegisterUserHandler.handle(@params)
+      RegisterUserHandler.handle(params: @params, session: context[:session])
     end
   end
 end

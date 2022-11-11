@@ -5,10 +5,7 @@ class GraphqlController < ApplicationController
     variables = prepare_variables(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
-    context = {
-      session: session,
-      current_user: current_user
-    }
+    context = { session: session, current_user: current_user }
     result = OlxBackendSchema.execute(query, variables: variables, context: context, operation_name: operation_name)
     render json: result
   rescue StandardError => e
@@ -19,10 +16,7 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    return unless session[:user_token]
-
-    user_id = JWT.decode(session[:user_token], nil, false).first
-    User.find(user_id)
+    SessionUserService.new(session: session).current_user
   end
 
   # Handle variables in form data, JSON body, or a blank value

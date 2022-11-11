@@ -8,18 +8,14 @@ class LoginUserHandler < BaseHandler
   end
 
   def handle
-    save_user_token_to_session
+    login_user
     user
   end
 
   private
 
-  def save_user_token_to_session
-    @session[:user_token] = user_token
-  end
-
-  def user_token
-    JWT.encode(user.id, nil, 'none')
+  def login_user
+    SessionUserService.new(user: user, session: @session).login
   end
 
   def user

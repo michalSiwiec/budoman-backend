@@ -30,6 +30,10 @@ module Types
           mutation: Mutations::UpdateUserDetailsMutation,
           description: "Update user's details"
 
+    field :remove_user,
+          mutation: Mutations::RemoveUserMutation,
+          description: "Remove user's account"
+
     field :add_opinion,
           mutation: Mutations::AddOpinionMutation,
           description: "Add user's opinion"

@@ -17,3 +17,4 @@ TODO
 # Czy to nie powinno dzialac tak ze ja definiuje jeden typ products do ktorego wrzucam wszystko i z frontu wybieram co ma zostac zwrocone?
 17) Zmien nazwy plikow w folderze mutation/types
 18) Naprawić regex dla hasła
+19) Po zalozeniu konta ustaw sesje na serwerze
