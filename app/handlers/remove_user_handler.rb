@@ -10,6 +10,7 @@ class RemoveUserHandler < BaseHandler
   def handle
     unsubscribe_from_newsletter
     clear_session
+    remove_user_objects_from_s3
     destroy_user
   end
 
@@ -21,6 +22,10 @@ class RemoveUserHandler < BaseHandler
 
   def clear_session
     @session.destroy
+  end
+
+  def remove_user_objects_from_s3
+    Aws::S3::UserObjectsCleanerService.new(user).call
   end
 
   def destroy_user

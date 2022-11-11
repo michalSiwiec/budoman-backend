@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   PHONE_NUMBER_REGEX = /\A[0-9]{9}\z/.freeze
 
   belongs_to :user
-  has_many :products_orders
+  has_many :products_orders, dependent: :destroy
 
   validates :delivery_method, inclusion: { in: DELIVERIES_DETAILS.pluck(:method) }
   validates :payment_method, inclusion: { in: ALLOWED_PAYMENT_METHOD }
