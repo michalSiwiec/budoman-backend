@@ -4,7 +4,7 @@ module Types
   module Custom
     module Objects
       class AvatarObject < Types::BaseObject
-        field :main, Boolean, null: false
+        field :main, String, null: false
         field :storage_path, String, null: false
       end
     end
