@@ -22,10 +22,6 @@ module Types
           mutation: Mutations::UnsubscribeUserFromNewsletterMutation,
           description: 'Remove user from newsletter'
 
-    field :change_user_password,
-          mutation: Mutations::ChangeUserPasswordMutation,
-          description: "Change user's password"
-
     field :update_user,
           mutation: Mutations::UpdateUserMutation,
           description: 'Update user'

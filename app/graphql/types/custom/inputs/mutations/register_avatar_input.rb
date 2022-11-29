@@ -4,7 +4,7 @@ module Types
   module Custom
     module Inputs
       module Mutations
-        class AvatarInput < Types::BaseInputObject
+        class RegisterAvatarInput < Types::BaseInputObject
           argument :main, Boolean, required: true
           argument :base64, String, required: true
           argument :file_name, String, required: true

@@ -12,6 +12,7 @@ module Types
           argument :street, String, required: false
           argument :city, String, required: false
           argument :postal_code, String, required: false
+          argument :password, String, required: false
         end
       end
     end
