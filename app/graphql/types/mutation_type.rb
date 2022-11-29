@@ -26,9 +26,9 @@ module Types
           mutation: Mutations::ChangeUserPasswordMutation,
           description: "Change user's password"
 
-    field :update_user_details,
-          mutation: Mutations::UpdateUserDetailsMutation,
-          description: "Update user's details"
+    field :update_user,
+          mutation: Mutations::UpdateUserMutation,
+          description: 'Update user'
 
     field :remove_user,
           mutation: Mutations::RemoveUserMutation,

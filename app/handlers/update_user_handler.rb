@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class UpdateUserDetailsHandler < BaseHandler
+class UpdateUserHandler < BaseHandler
   def initialize(params)
     super()
     @user_id = params[:user_id]
