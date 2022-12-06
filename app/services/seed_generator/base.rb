@@ -26,7 +26,7 @@ module SeedGenerator
     end
 
     def generate_records_attributes
-      raise NotImplementedError, 'generate_records_attributes has to be defined!'
+      raise NotImplementedError, "#{__method__} has to be defined!"
     end
 
     def column_quantity
