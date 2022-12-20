@@ -1,8 +1,9 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username:
-  password:
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USER_NAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
@@ -12,9 +13,3 @@ development:
 test:
   <<: *default
   database: olx-backend_test
-
-production:
-  <<: *default
-  database: olx-backend_production
-  username: olx-backend
-  password: <%= ENV['OLX-BACKEND_DATABASE_PASSWORD'] %>

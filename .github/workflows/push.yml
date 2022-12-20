@@ -1,0 +1,42 @@
+name: Test app
+on: push
+jobs:
+  Lint-app:
+    runs-on: ubuntu-latest
+    env:
+      DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+      DATABASE_USER_NAME: ${{ secrets.DATABASE_USER_NAME }}
+      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_HOST: ${{ env.DATABASE_HOST }}
+          POSTGRES_PORT: 5432
+          POSTGRES_USER: ${{ env.DATABASE_USER_NAME }}
+          POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          RAILS_ENV: test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+    steps:
+    - name: Setup Ruby
+      uses: ruby/setup-ruby-pkgs@v1.32.3
+      with:
+        ruby-version: 2.7.2
+    - name: Upload repository
+      uses: actions/checkout@v3
+    - name: Install dependencies
+      run: bundle install
+    - name: Prepare config files
+      run: |
+        cp config/database.sample.yml config/database.yml
+        cp .env.sample .env
+    - name: Setup database
+      run: bundle exec rails db:setup
+    - name: Start lint
+      run: bundle exec rubocop
