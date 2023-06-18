@@ -1,8 +1,7 @@
 # Budoman-backend
 
 ## About project
-
-Budoman-backend is a backend part-creating microservice for construction shop.
+Budoman-backend is a backend app for construction shop.
 This is developed using:
 
 - [Ruby](https://ruby-doc.org/) (2.7.2)
@@ -12,38 +11,19 @@ This is developed using:
 - [RSpec](https://rspec.info/documentation/) (5.0.0)
 
 ## Requirements
-
 - Ruby 2.7.2
 - PostgreSQL 14
 
-## Setup
-
-Use the package manager [bundler](https://bundler.io/) to install dependencies.
-
+## Application setup
+1. Make sure that you have filled .env file
+2. Make sure that you have Docker installed on your local machine
+3. Run the following command to start the application:
 ```bash
-bundle i # To install dependencies
-cp .env.sample .env # To set env variables
-bundle exec rails db:create db:migrate db:seed # To setup database
-```
-
-## Usage
-
-To start app use:
-```bash
-rails s -p 3333
+docker-compose up # app should be available on 3333 port
 ```
 
 ## Code quality
-
-I use linter for ruby files. To run linters:
-
 ```bash
-bundle exec rubocop
-```
-
-## Tests
-
-### Unit
-```bash
-bundle exec rspec
+bundle exec rubocop # to turn on linter
+bundle exec rspec # to turn on unit tests
 ```

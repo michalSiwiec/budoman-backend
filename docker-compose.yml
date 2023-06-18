@@ -1,0 +1,23 @@
+version: 1.0.0
+services:
+  app:
+    image: michsiw439/budoman-backend:1.0.0
+    container_name: budoman-backend-app
+    ports:
+      - 3333:3333
+    env_file:
+      - .env
+    networks:
+      - budoman-backend
+  postgres:
+    image: postgres:14
+    container_name: budoman-backend-postgres
+    ports:
+      - 5433:${DATABASE_PORT}
+    environment:
+      - POSTGRES_USER=${DATABASE_USER_NAME}
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+    networks:
+      - budoman-backend
+networks:
+  budoman-backend:
