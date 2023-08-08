@@ -17,6 +17,8 @@ services:
       - .env
     networks:
       - budoman-backend
+    volumes:
+      - .:/budoman-backend
   postgres:
     image: postgres:14
     container_name: budoman-backend-postgres

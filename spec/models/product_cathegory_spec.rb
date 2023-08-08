@@ -1,7 +1,9 @@
-# frozen_string_literal: true
+describe ProductCathegory, type: :model do
+  describe 'associations' do
+    it { should have_many(:products) }
+  end
 
-require 'rails_helper'
-
-RSpec.describe ProductCathegory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it { should validate_presence_of(:name) }
+  end
 end

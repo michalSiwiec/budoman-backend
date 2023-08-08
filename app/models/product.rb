@@ -1,10 +1,9 @@
-# frozen_string_literal: true
-
 class Product < ApplicationRecord
   belongs_to :product_cathegory
   has_many :products_orders
 
-  validates :name, :picture_path, presence: true
+  validates :name, presence: true
+  validates :picture_path, presence: true
   validates :price, numericality: true
   validates :available_quantity, numericality: { only_integer: true }
 

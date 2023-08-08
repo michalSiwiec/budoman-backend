@@ -1,7 +1,7 @@
 name: Test app
 on: push
 jobs:
-  Lint-app:
+  Code-quality:
     runs-on: ubuntu-latest
     env:
       DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
@@ -40,3 +40,5 @@ jobs:
       run: bundle exec rails db:setup
     - name: Start lint
       run: bundle exec rubocop
+    - name: Start unit tests
+      run: bundle exec rspec

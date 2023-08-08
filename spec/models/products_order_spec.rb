@@ -1,7 +1,10 @@
-# frozen_string_literal: true
+describe ProductsOrder, type: :model do
+  describe 'associations' do
+    it { should belong_to(:order) }
+    it { should belong_to(:product) }
+  end
 
-require 'rails_helper'
-
-RSpec.describe ProductsOrder, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'validations' do
+    it { should validate_numericality_of(:product_quantity).only_integer }
+  end
 end
