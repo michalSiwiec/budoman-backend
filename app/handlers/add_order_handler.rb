@@ -9,7 +9,7 @@ class AddOrderHandler < BaseHandler
 
   def handle
     handle_order_creation
-    generate_invoice
+    upload_invoice_on_storage
     send_order_email
     @order
   end
@@ -42,8 +42,8 @@ class AddOrderHandler < BaseHandler
     end
   end
 
-  def generate_invoice
-    Aws::S3::InvoiceUploaderService.call(@order)
+  def upload_invoice_on_storage
+    Aws::S3::UploadInvoiceService.call(order: @order)
   end
 
   def send_order_email
