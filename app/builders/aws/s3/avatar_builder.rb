@@ -1,43 +1,39 @@
-# frozen_string_literal: true
-
 module Aws
   module S3
-    class AvatarBuilder
-      attr_writer :avatar
-
-      def initialize(user_id)
+    class AvatarBuilder < BaseBuilder
+      def initialize(user_id:, avatar:)
         @user_id = user_id
+        @avatar = avatar
+        @config = Rails.application.config
       end
 
       def build
+        avatar_base64 = generate_avatar_base64
+        path_to_file = generate_path_to_file
+        avatar_details = generate_avatar_details(path_to_file: path_to_file)
+
         {
-          base64: base64,
-          path: path,
-          bucket: config.aws_bucket,
-          details: details
+          base64: avatar_base64,
+          path: path_to_file,
+          bucket: @config.aws_bucket,
+          details: avatar_details
         }
       end
 
       private
 
-      def base64
+      def generate_avatar_base64
         Base64.decode64(@avatar[:base64].split(',').second)
       end
 
-      def path
+      def generate_path_to_file
         "users/#{@user_id}/avatars/#{@avatar[:file_name]}"
       end
 
-      def details
-        { main: @avatar[:main], storage_path: full_path }
-      end
+      def generate_avatar_details(path_to_file:)
+        storage_path = "https://#{@config.aws_bucket}.#{@config.aws_path}/#{path_to_file}"
 
-      def full_path
-        "https://#{config.aws_bucket}.#{config.aws_path}/#{path}"
-      end
-
-      def config
-        @config ||= Rails.application.config
+        { main: @avatar[:main], storage_path: storage_path }
       end
     end
   end
