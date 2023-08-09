@@ -25,7 +25,7 @@ class RemoveUserHandler < BaseHandler
   end
 
   def remove_user_objects_from_s3
-    Aws::S3::UserObjectsCleanerService.new(user).call
+    ::Aws::S3::CleanUserObjectsService.call(user: user)
   end
 
   def destroy_user

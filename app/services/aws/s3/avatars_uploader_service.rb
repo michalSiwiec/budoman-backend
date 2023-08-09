@@ -2,7 +2,7 @@
 
 module Aws
   module S3
-    class AvatarsUploaderService < S3BaseService
+    class AvatarsUploaderService < BaseService
       def initialize(avatars:, user_id:)
         super()
         @user_id = user_id
