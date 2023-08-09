@@ -18,9 +18,10 @@ This is developed using:
 1. Make sure that you have filled .env file
 2. Make sure that you have Docker installed on your local machine
 3. Make sure that you have generated ssh keys with default path
-4. Run the following command to start the application:
+4. Run the following commands to start the application:
 ```bash
-SSH_PUB_KEY=$(cat ~/.ssh/id_rsa.pub) docker-compose build # App should be available on port 3333
+SSH_PUB_KEY=$(cat ~/.ssh/id_rsa.pub) docker-compose build # Build images (perform only once)
+docker-compose up # App should be available on port 3333
 ```
 
 ## Code quality
