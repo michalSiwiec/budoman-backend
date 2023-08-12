@@ -1,30 +1,24 @@
-# frozen_string_literal: true
+require 'open-uri'
 
 class OrderMailer < ApplicationMailer
   def order_created
     @order = params[:order]
     @presenter = OrderPresenter.new(@order)
 
-    attach_invoice
+    attach_attachments
     send_email
   end
 
   private
 
-  def attach_invoice
+  def attach_attachments
     attachments['Faktura.pdf'] = invoice_to_attach
   end
 
   def invoice_to_attach
-    File.read(URI.parse(url_to_invoice).open)
-  end
-
-  def url_to_invoice
-    "https://#{config.aws_bucket}.#{config.aws_path}/users/#{@order.user.id}/invoices/#{@order.id}.pdf"
-  end
-
-  def config
-    @config ||= Rails.application.config
+    config = Rails.application.config
+    url_to_invoice = "https://#{config.aws_bucket}.#{config.aws_path}/users/#{@order.user.id}/invoices/#{@order.id}.pdf"
+    open(url_to_invoice).read
   end
 
   def send_email
