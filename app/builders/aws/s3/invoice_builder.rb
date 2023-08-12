@@ -1,7 +1,7 @@
 module Aws
   module S3
     class InvoiceBuilder < BaseBuilder
-      PATH_TO_INVOICE_TEMPLATE = 'app/views/invoice.html.erb'
+      PATH_TO_INVOICE_TEMPLATE = 'app/views/invoice.html.erb'.freeze
 
       def initialize(order:)
         super()
@@ -10,12 +10,12 @@ module Aws
 
       def build
         path_to_invoice = generate_path_to_invoice
-        invoice_in_base_64 = generate_invoice_in_base_64
-        
+        invoice_in_base64 = generate_invoice_in_base64
+
         {
           bucket: Rails.application.config.aws_bucket,
           path: path_to_invoice,
-          body: invoice_in_base_64
+          body: invoice_in_base64
         }
       end
 
@@ -25,9 +25,10 @@ module Aws
         "users/#{@order.user_id}/invoices/#{@order.id}.pdf"
       end
 
-      def generate_invoice_in_base_64
+      def generate_invoice_in_base64
         presenter = OrderPresenter.new(@order)
-        pdf_html = ActionController::Base.new.render_to_string(file: PATH_TO_INVOICE_TEMPLATE, locals: { presenter: presenter })
+        pdf_html = ActionController::Base.new.render_to_string(file: PATH_TO_INVOICE_TEMPLATE,
+                                                               locals: { presenter: presenter })
         WickedPdf.new.pdf_from_string(pdf_html)
       end
     end
