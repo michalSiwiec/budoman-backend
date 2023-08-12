@@ -13,7 +13,7 @@ module Aws
       private
 
       def upload_to_aws
-        payload = ::Aws::S3::InvoiceBuilder.build(@order)
+        payload = ::Aws::S3::InvoiceBuilder.build(order: @order)
         @aws_client.put_object(bucket: payload[:bucket], key: payload[:path], body: payload[:body])
       end
     end
