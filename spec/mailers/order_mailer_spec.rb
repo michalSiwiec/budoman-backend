@@ -3,9 +3,10 @@ describe OrderMailer, type: :mailer do
     subject { described_class.with(order: order).order_created.deliver_now }
 
     let(:order) { create(:order) }
+    let(:attachment_service) { instance_double(Mails::Order::GenerateAtachmentsForOrderCreatedService, call: [{ file_name: 'Faktura.pdf', content: 'invoice_content' }]) }
 
     before do
-      allow_any_instance_of(Kernel).to receive_message_chain(:open, :read).and_return('invoice is base64')
+      allow(Mails::Order::GenerateAtachmentsForOrderCreatedService).to receive(:new).and_return(attachment_service)
     end
 
     it { expect(subject.subject).to eq('Dziękujemy za zrealizowanie zamówienia!') }
