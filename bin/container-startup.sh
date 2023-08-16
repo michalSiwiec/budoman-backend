@@ -3,6 +3,9 @@
 # Start the SSH service
 service ssh start
 
+# Start cron service
+service cron start
+
 # Setup database
 rails runner "ActiveRecord::Base.establish_connection; exit ActiveRecord::Base.connection.active?" 
 DB_EXISTS=$?

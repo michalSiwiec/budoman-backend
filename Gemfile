@@ -26,8 +26,6 @@ gem 'jwt'
 # to generate pdf
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-# to work with crontab
-gem 'whenever', require: false
 # to work with env variables
 gem 'dotenv-rails'
 # to fix session on heroku
