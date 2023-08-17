@@ -1,6 +1,6 @@
 module Aws
   module S3
-    class CleanUserObjectsService < BaseService
+    class CleanUserObjectsService < S3BaseService
       def initialize(user:)
         super()
         @user = user

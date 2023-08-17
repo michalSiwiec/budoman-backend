@@ -1,6 +1,6 @@
 module Aws
   module S3
-    class UploadInvoiceService < BaseService
+    class UploadInvoiceService < S3BaseService
       def initialize(order:)
         super()
         @order = order
