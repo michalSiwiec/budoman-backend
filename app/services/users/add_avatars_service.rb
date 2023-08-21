@@ -1,5 +1,5 @@
 module Users
-  class HandleAddingAvatarsService
+  class AddAvatarsService
     def initialize(user:, avatars:)
       @user = user
       @avatars = avatars
