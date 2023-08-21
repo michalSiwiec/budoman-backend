@@ -1,5 +1,5 @@
 module Users
-  class SendRegistrationMailService
+  class SendRegistrationMailAdapter
     def initialize(email:, password:)
       @email = email
       @password = password
