@@ -16,7 +16,7 @@ class GraphqlController < ApplicationController
   private
 
   def current_user
-    SessionUserService.new(session: session).current_user
+    ::Users::SessionUserService.new(session: session).current_user
   end
 
   # Handle variables in form data, JSON body, or a blank value

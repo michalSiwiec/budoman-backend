@@ -15,7 +15,7 @@ class LoginUserHandler < BaseHandler
   private
 
   def login_user
-    SessionUserService.new(user: user, session: @session).login
+    ::Users::SessionUserService.new(user: user, session: @session).login
   end
 
   def user
