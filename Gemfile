@@ -30,6 +30,10 @@ gem 'wkhtmltopdf-binary'
 gem 'dotenv-rails'
 # to fix session on heroku
 gem 'rails_same_site_cookie'
+# To proces async jobs
+gem 'sidekiq', '~> 6.5.9'
+gem 'redis', '~> 4.8.1'
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 

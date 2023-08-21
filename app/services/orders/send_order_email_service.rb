@@ -11,7 +11,7 @@ module Orders
     private
 
     def send_order_email
-      OrderMailer.with(order: @order).order_created.deliver_later
+      OrderMailer.with(order: @order).order_created.deliver_later(queue: :order)
     end
   end
 end

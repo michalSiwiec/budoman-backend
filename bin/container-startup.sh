@@ -6,6 +6,9 @@ service ssh start
 # Start cron service
 service cron start
 
+# Start sidekiq in background
+bundle exec sidekiq &
+
 # Setup database
 rails runner "ActiveRecord::Base.establish_connection; exit ActiveRecord::Base.connection.active?" 
 DB_EXISTS=$?

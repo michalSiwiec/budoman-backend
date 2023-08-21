@@ -1,0 +1,5 @@
+:queues:
+  - order
+  - default
+  - newsletter
+:retry: 5

@@ -29,5 +29,12 @@ services:
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
     networks:
       - budoman-backend
+  redis:
+    image: redis:7.2.0
+    container_name: budoman-backend-redis
+    ports:
+      - 6379:6379
+    networks:
+      - budoman-backend
 networks:
   budoman-backend:

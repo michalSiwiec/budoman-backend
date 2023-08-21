@@ -30,6 +30,7 @@ module OlxBackend
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
+    config.action_mailer.deliver_later_queue_name = :default
     config.action_mailer.smtp_settings = {
       address: 'smtp.gmail.com',
       port: 587,
@@ -39,5 +40,7 @@ module OlxBackend
       authentication: ENV['SMTP_AUTHENTICATION'],
       enable_starttls_auto: true,
     }
+    # For async jobs
+    config.active_job.queue_adapter = :sidekiq
   end
 end
