@@ -21,6 +21,10 @@ module Users
       find_user_by_id
     end
 
+    def destroy
+      @session.destroy
+    end
+
     private
 
     def save_user_token_to_session
