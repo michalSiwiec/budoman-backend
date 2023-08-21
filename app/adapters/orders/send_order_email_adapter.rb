@@ -1,5 +1,5 @@
 module Orders
-  class SendOrderEmailService
+  class SendOrderEmailAdapter
     def initialize(order:)
       @order = order
     end
