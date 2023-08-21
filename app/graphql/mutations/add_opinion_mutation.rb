@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      AddOpinionService.call(params: @params)
+      ::Opinions::AddOpinionService.call(params: @params)
     end
   end
 end

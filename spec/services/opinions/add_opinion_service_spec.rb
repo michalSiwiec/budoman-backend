@@ -1,4 +1,4 @@
-describe AddOpinionService, type: :service do
+describe Opinions::AddOpinionService, type: :service do
   describe '#call' do
     subject { described_class.call(params: params) }
 
