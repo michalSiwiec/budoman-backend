@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      SubscribeUserToNewsletterHandler.handle(@params)
+      ::Newsletters::SubscribeToNewsletterService.call(params: @params)
     end
   end
 end
