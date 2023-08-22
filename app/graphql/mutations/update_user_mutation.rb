@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      UpdateUserHandler.handle(@params)
+      ::Users::UpdateUserService.call(params: @params)
     end
   end
 end
