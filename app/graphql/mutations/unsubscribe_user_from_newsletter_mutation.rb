@@ -6,7 +6,7 @@ module Mutations
     type Types::Custom::Objects::UserObject
 
     def resolve(params)
-      UnsubscribeUserFromNewsletterHandler.handle(params[:email])
+      ::Newsletters::UnsubscribeFromNewsletterService.call(email: params[:email])
     end
   end
 end

@@ -1,6 +1,7 @@
 module Newsletters
-  class UnsubscribeFromNewsletterService
+  class UnsubscribeFromNewsletterService < BaseService
     def initialize(email:)
+      super()
       @email = email
     end
 
