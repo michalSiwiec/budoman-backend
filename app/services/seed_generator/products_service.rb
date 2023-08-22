@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SeedGenerator
-  class Products < Base
+  class ProductsService < BaseService
     private
 
     SHEET_NAME = 'Products'

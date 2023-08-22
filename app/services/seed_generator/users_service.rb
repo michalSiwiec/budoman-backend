@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SeedGenerator
-  class Users < Base
+  class UsersService < BaseService
     private
 
     SHEET_NAME = 'Users'

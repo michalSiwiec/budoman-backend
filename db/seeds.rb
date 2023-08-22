@@ -1,1 +1,1 @@
-%w[Users Opinions ProductCathegories Products].each { |seeds_name| "SeedGenerator::#{seeds_name}".constantize.call }
+%w[Users Opinions ProductCategories Products].each { |seeds_name| "SeedGenerator::#{seeds_name}Service".constantize.call }

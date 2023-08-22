@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module SeedGenerator
-  class Opinions < Base
+  class ProductCategoriesService < BaseService
     private
 
-    SHEET_NAME = 'Opinions'
-    MODEL = Opinion
+    SHEET_NAME = 'ProductsCathegories'
+    MODEL = ProductCathegory
 
     def generate_records_attributes
       records_attributes = []
@@ -30,21 +30,7 @@ module SeedGenerator
     end
 
     def column_value
-      return user_id if user_column?
-
-      column_content
-    end
-
-    def user_id
-      User.find_by!(email: column_content).id
-    end
-
-    def column_content
       @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number].value
-    end
-
-    def user_column?
-      @column_number == 2
     end
   end
 end
