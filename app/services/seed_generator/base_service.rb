@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require 'open-uri'
+
 module SeedGenerator
   class BaseService < ::BaseService
-    WORK_BOOK_PATH = 'app/services/seed_generator/Seeds.xlsx'
+    WORK_BOOK_PATH = 'https://olx-development.s3.eu-central-1.amazonaws.com/seeds/Seeds.xlsx'
     COLUMN_NAME_ROW_INDEX = 0
     COLUMN_NAME_Y_OFFSET = 1
 
@@ -18,7 +20,9 @@ module SeedGenerator
     private
 
     def workbook
-      RubyXL::Parser.parse(WORK_BOOK_PATH)
+      buffer = URI.open(WORK_BOOK_PATH).read
+      workbook = RubyXL::Parser.parse_buffer(buffer)
+      workbook
     end
 
     def create_records

@@ -7,6 +7,6 @@ class ConvertFileToStringService < BaseService
   end
 
   def call
-    open(@path_to_file).read
+    URI.open(@path_to_file).read
   end
 end
