@@ -29,3 +29,10 @@ docker-compose up # App should be available on port 3333
 bundle exec rubocop # to turn on linter
 bundle exec rspec # to turn on unit tests
 ```
+
+## Tips
+To turn on debugger inside container:
+```bash
+binding.pry # to stop performing app
+docker attach budoman-backend-app # To have access to container's session
+```
