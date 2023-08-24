@@ -36,3 +36,7 @@ To turn on debugger inside container:
 binding.pry # to stop performing app
 docker attach budoman-backend-app # To have access to container's session
 ```
+
+## Deploy
+Application is automatically deployed on production through Github Actions.  
+Deploy in performing after merge to master brach when action responsible for testing and linting app is succesfull.
