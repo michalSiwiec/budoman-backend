@@ -1,4 +1,4 @@
-describe ProductCathegory, type: :model do
+describe ProductCategory, type: :model do
   describe 'associations' do
     it { should have_many(:products) }
   end

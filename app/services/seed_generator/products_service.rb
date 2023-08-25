@@ -30,17 +30,17 @@ module SeedGenerator
     end
 
     def column_value
-      return product_cathegory_id if product_cathegory_column?
+      return product_category_id if product_category_column?
       return available_quantity if available_quantity_column?
 
       column_content
     end
 
-    def product_cathegory_id
-      ProductCathegory.find_by(name: column_content).id
+    def product_category_id
+      ProductCategory.find_by(name: column_content).id
     end
 
-    def product_cathegory_column?
+    def product_category_column?
       @column_number == 4
     end
 
@@ -54,6 +54,10 @@ module SeedGenerator
 
     def column_content
       @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number]&.value
+    end
+
+    def rows_quantity
+      26
     end
   end
 end

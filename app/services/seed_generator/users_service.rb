@@ -41,5 +41,9 @@ module SeedGenerator
     def column_value
       @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number].value
     end
+
+    def rows_quantity
+      2
+    end
   end
 end

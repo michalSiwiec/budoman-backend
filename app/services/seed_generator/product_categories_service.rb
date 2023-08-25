@@ -4,8 +4,8 @@ module SeedGenerator
   class ProductCategoriesService < BaseService
     private
 
-    SHEET_NAME = 'ProductsCathegories'
-    MODEL = ProductCathegory
+    SHEET_NAME = 'ProductsCategories'
+    MODEL = ProductCategory
 
     def generate_records_attributes
       records_attributes = []
@@ -31,6 +31,10 @@ module SeedGenerator
 
     def column_value
       @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number].value
+    end
+
+    def rows_quantity
+      5
     end
   end
 end

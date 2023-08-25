@@ -47,7 +47,7 @@ class OrderPresenter
 
       {
         name: product.name,
-        category_name: PRODUCT_CATHEGORIES_NAMES[product.product_cathegory.name.to_sym],
+        category_name: PRODUCT_CATEGORIES_NAMES[product.product_category.name.to_sym],
         quantity: product_order.product_quantity,
         price: product.price
       }

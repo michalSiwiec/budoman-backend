@@ -1,6 +1,6 @@
 describe Product, type: :model do
   describe 'associations' do
-    it { should belong_to(:product_cathegory) }
+    it { should belong_to(:product_category) }
     it { should have_many(:products_orders) }
   end
 

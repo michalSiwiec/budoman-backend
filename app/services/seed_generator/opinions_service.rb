@@ -46,5 +46,9 @@ module SeedGenerator
     def user_column?
       @column_number == 2
     end
+
+    def rows_quantity
+      2
+    end
   end
 end

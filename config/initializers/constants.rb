@@ -6,7 +6,7 @@ COMPANY_DETAILS = {
   address: 'Żywiec, 34-300, Beskidzka 50'
 }.freeze
 
-PRODUCT_CATHEGORIES_NAMES = {
+PRODUCT_CATEGORIES_NAMES = {
   foundation_zone: 'Strefa fundamentu',
   roof_zone: 'Strefa dachu',
   construction_chemicals: 'Materiały chemiczne',
