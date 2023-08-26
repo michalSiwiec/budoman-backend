@@ -1,12 +1,18 @@
 name: Test code quality
 on: push
+env:
+  DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+  DATABASE_USER_NAME: ${{ secrets.DATABASE_USER_NAME }}
+  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
 jobs:
-  Test-code-quality:
+  code-quality:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        task: ['rubocop', 'rspec']
     env:
-      DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-      DATABASE_USER_NAME: ${{ secrets.DATABASE_USER_NAME }}
-      DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+      RAILS_ENV: test
     services:
       postgres:
         image: postgres
@@ -34,9 +40,9 @@ jobs:
       run: bundle install
     - name: Prepare config files
       run: cp config/database.sample.yml config/database.yml 
+      if: matrix.task == 'rspec' # Only prepare configs for the rspec task
     - name: Setup database
-      run: bundle exec rails db:setup
-    - name: Start lint
-      run: bundle exec rubocop
-    - name: Start unit tests
-      run: bundle exec rspec
+      run: bundle exec rails db:create db:migrate
+      if: matrix.task == 'rspec' # Only set up the database for the rspec task
+    - name: Run ${{ matrix.task }}
+      run: bundle exec ${{ matrix.task }}
