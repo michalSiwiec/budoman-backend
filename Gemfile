@@ -33,6 +33,8 @@ gem 'rails_same_site_cookie'
 # To proces async jobs
 gem 'sidekiq', '~> 6.5.9'
 gem 'redis', '~> 4.8.1'
+# To track errors
+gem 'rollbar', '~> 3.4' # https://docs.rollbar.com/docs/ruby
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
