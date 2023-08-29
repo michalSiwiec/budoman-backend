@@ -2,7 +2,7 @@ module Users
   class UpdateUserService < BaseService
     def initialize(params:)
       super()
-      @user_id = params[:user_id]
+      @user_id = params.fetch(:user_id)
       @attributes_to_update = params.except(:user_id)
     end
 

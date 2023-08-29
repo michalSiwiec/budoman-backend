@@ -23,17 +23,17 @@ module Aws
       private
 
       def generate_avatar_base64
-        Base64.decode64(@avatar[:base64].split(',').second)
+        Base64.decode64(@avatar.fetch(:base64).split(',').second)
       end
 
       def generate_path_to_file
-        "users/#{@user_id}/avatars/#{@avatar[:file_name]}"
+        "users/#{@user_id}/avatars/#{@avatar.fetch(:file_name)}"
       end
 
       def generate_avatar_details(path_to_file:)
         storage_path = "https://#{@config.aws_bucket}.#{@config.aws_path}/#{path_to_file}"
 
-        { main: @avatar[:main], storage_path: storage_path }
+        { main: @avatar.fetch(:main), storage_path: storage_path }
       end
     end
   end

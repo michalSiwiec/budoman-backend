@@ -28,6 +28,6 @@ class Order < ApplicationRecord
   end
 
   def price_for_delivery
-    DELIVERIES_DETAILS.find { |delivery_details| delivery_details[:method] == delivery_method }[:price]
+    DELIVERIES_DETAILS.find { |delivery_details| delivery_details.fetch(:method) == delivery_method }.fetch(:price)
   end
 end

@@ -15,7 +15,7 @@ module Users
     private
 
     def find_user
-      User.find_by!(email: @params[:email]).authenticate(@params[:password])
+      User.find_by!(email: @params.fetch(:email)).authenticate(@params.fetch(:password))
     end
 
     def login_user(user:)

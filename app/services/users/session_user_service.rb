@@ -16,7 +16,7 @@ module Users
     end
 
     def current_user
-      return unless @session[:user_token]
+      return unless @session.fetch(:user_token, nil)
 
       find_user_by_id
     end
@@ -40,7 +40,7 @@ module Users
     end
 
     def user_id
-      JWT.decode(@session[:user_token], JWT_PASSWORD, JWT_VALIDATION).first
+      JWT.decode(@session.fetch(:user_token), JWT_PASSWORD, JWT_VALIDATION).first
     end
   end
 end

@@ -9,8 +9,8 @@ module Users
     def call
       user = create_user
       composite = ::BaseComposite.new
-      composite.add_task(task: ::Users::AddAvatarsService.new(user: user, avatars: @params[:avatars]))
-      composite.add_task(task: ::Users::SendRegistrationMailAdapter.new(email: @params[:email], password: @params[:password]))
+      composite.add_task(task: ::Users::AddAvatarsService.new(user: user, avatars: @params.fetch(:avatars)))
+      composite.add_task(task: ::Users::SendRegistrationMailAdapter.new(email: @params.fetch(:email), password: @params.fetch(:password)))
       composite.add_task(task: ::Users::LoginUserAdapter.new(user: user, session: @session))
       composite.call
       user

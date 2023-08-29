@@ -12,9 +12,9 @@ module Opinions
     private
 
     def create_opinion
-      Opinion.create!(content: @params[:content],
-                      mark: @params[:mark],
-                      user_id: @params[:user_id])
+      Opinion.create!(content: @params.fetch(:content),
+                      mark: @params.fetch(:mark),
+                      user_id: @params.fetch(:user_id))
     end
   end
 end

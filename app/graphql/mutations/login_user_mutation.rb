@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      ::Users::HandleLoginUserService.call(params: @params, session: context[:session])
+      ::Users::HandleLoginUserService.call(params: @params, session: context.fetch(:session))
     end
   end
 end

@@ -21,13 +21,13 @@ module Aws
       private
 
       def upload_avatar_to_storage(payload:)
-        @aws_client.put_object(body: payload[:base64],
-                               bucket: payload[:bucket],
-                               key: payload[:path])
+        @aws_client.put_object(body: payload.fetch(:base64),
+                               bucket: payload.fetch(:bucket),
+                               key: payload.fetch(:path))
       end
 
       def save_avatar_details(payload:)
-        @uploaded_avatars_details << payload[:details]
+        @uploaded_avatars_details << payload.fetch(:details)
       end
     end
   end

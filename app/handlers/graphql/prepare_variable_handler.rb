@@ -1,16 +1,16 @@
 module Graphql
   class PrepareVariableHandler < BaseHandler
     def call(handler_context:)
-      context = prepare_context(params: handler_context[:params], session: handler_context[:session])
+      context = prepare_context(params: handler_context.fetch(:params), session: handler_context.fetch(:session))
       @next_handler&.call(handler_context: context)
     end
 
     private
 
     def prepare_context(params:, session:)
-      variables = prepare_variables(variables_param: params[:variables])
-      query = params[:query]
-      operation_name = params[:operationName]
+      variables = prepare_variables(variables_param: params.fetch(:variables))
+      query = params.fetch(:query)
+      operation_name = params.fetch(:operationName, nil)
       context = { session: session, current_user: current_user(session: session) }
 
       { variables: variables, query: query, operation_name: operation_name, context: context }

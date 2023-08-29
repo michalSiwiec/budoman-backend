@@ -3,7 +3,7 @@ module Orders
     def initialize(params:)
       super()
       @order = prepare_order(params: params)
-      @products_order_params = params[:products_order]
+      @products_order_params = params.fetch(:products_order)
     end
 
     def call

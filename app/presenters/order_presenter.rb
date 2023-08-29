@@ -7,9 +7,9 @@ class OrderPresenter
 
   def company_details
     [
-      { field: 'Adres:', value: COMPANY_DETAILS[:address] },
-      { field: 'Telefon:', value: COMPANY_DETAILS[:phone] },
-      { field: 'Adres email:', value: COMPANY_DETAILS[:email] }
+      { field: 'Adres:', value: COMPANY_DETAILS.fetch(:address) },
+      { field: 'Telefon:', value: COMPANY_DETAILS.fetch(:phone) },
+      { field: 'Adres email:', value: COMPANY_DETAILS.fetch(:email) }
     ]
   end
 
@@ -47,7 +47,7 @@ class OrderPresenter
 
       {
         name: product.name,
-        category_name: PRODUCT_CATEGORIES_NAMES[product.product_category.name.to_sym],
+        category_name: PRODUCT_CATEGORIES_NAMES.fetch(product.product_category.name.to_sym),
         quantity: product_order.product_quantity,
         price: product.price
       }

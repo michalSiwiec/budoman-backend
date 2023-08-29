@@ -2,7 +2,7 @@
 
 class ProductQuery
   def initialize(params)
-    @params = params[:input].to_h
+    @params = params.fetch(:input).to_h
     @products = set_initial_products_scope
   end
 
@@ -18,15 +18,15 @@ class ProductQuery
   private
 
   def set_initial_products_scope
-    return Product.promoted if @params[:promoted]
+    return Product.promoted if @params.fetch(:promoted)
 
     Product.all
   end
 
   def filter_by_type_if_needed
-    return unless @params[:type]
+    return unless @params.fetch(:type)
 
-    @products = Product.from_type(@params[:type].underscore)
+    @products = Product.from_type(@params.fetch(:type).underscore)
   end
 
   def filter_by_availability

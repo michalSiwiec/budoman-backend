@@ -2,7 +2,7 @@
 
 class OpinionQuery
   def initialize(params)
-    @params = params[:input].to_h
+    @params = params.fetch(:input).to_h
     @opinions = Opinion.all
   end
 

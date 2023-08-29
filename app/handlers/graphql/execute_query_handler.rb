@@ -7,10 +7,10 @@ module Graphql
     private
 
     def execute_query(handler_context:)
-      OlxBackendSchema.execute(handler_context[:query],
-                               variables: handler_context[:variables],
-                               context: handler_context[:context],
-                               operation_name: handler_context[:operation_name])
+      OlxBackendSchema.execute(handler_context.fetch(:query),
+                               variables: handler_context.fetch(:variables),
+                               context: handler_context.fetch(:context),
+                               operation_name: handler_context.fetch(:operation_name))
     end
   end
 end

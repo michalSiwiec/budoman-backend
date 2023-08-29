@@ -2,7 +2,7 @@
 
 class OrderQuery
   def initialize(params)
-    @params = params[:input].to_h
+    @params = params.fetch(:input).to_h
     @orders = Order.all
   end
 
@@ -16,9 +16,9 @@ class OrderQuery
   private
 
   def filter_by_membership_to_user_if_need
-    return unless @params[:user_id]
+    return unless @params.fetch(:user_id)
 
-    @orders = User.find(@params[:user_id]).orders
+    @orders = User.find(@params.fetch(:user_id)).orders
   end
 
   def paginate

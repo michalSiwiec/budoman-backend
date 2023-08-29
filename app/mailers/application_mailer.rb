@@ -11,8 +11,8 @@ class ApplicationMailer < ActionMailer::Base
   def attach_attachments(attachments_data_generator:)
     attachments_datas = attachments_data_generator.call
     attachments_datas.each do |attachment_data|
-      file_name = attachment_data[:file_name]
-      file_content = attachment_data[:content]
+      file_name = attachment_data.fetch(:file_name)
+      file_content = attachment_data.fetch(:content)
 
       attachments[file_name] = file_content
     end
