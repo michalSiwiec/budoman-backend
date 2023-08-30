@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_25_115450) do
+ActiveRecord::Schema.define(version: 2023_08_30_123250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 2023_08_25_115450) do
   end
 
   create_table "opinions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "content"
-    t.integer "mark"
-    t.uuid "user_id"
+    t.text "content", null: false
+    t.integer "mark", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_opinions_on_user_id"
