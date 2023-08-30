@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_30_174335) do
+ActiveRecord::Schema.define(version: 2023_08_30_175306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -35,18 +35,18 @@ ActiveRecord::Schema.define(version: 2023_08_30_174335) do
   end
 
   create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.string "surname"
-    t.string "phone_number"
-    t.string "street"
-    t.string "city"
-    t.string "postal_code"
-    t.string "delivery_method"
-    t.string "payment_method"
-    t.uuid "user_id"
+    t.string "name", null: false
+    t.string "surname", null: false
+    t.string "phone_number", null: false
+    t.string "street", null: false
+    t.string "city", null: false
+    t.string "postal_code", null: false
+    t.string "delivery_method", null: false
+    t.string "payment_method", null: false
+    t.uuid "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
+    t.string "email", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2023_08_30_174335) do
 
   add_foreign_key "opinions", "users"
   add_foreign_key "orders", "users"
+  add_foreign_key "orders", "users", name: "orders_user_id_fkey"
   add_foreign_key "products", "product_categories"
   add_foreign_key "products_orders", "orders"
   add_foreign_key "products_orders", "products"
