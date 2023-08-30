@@ -1,5 +1,7 @@
 describe Newsletter, type: :model do
   describe 'validations' do
+    subject { described_class.new(name: 'John', surname: 'Doe', email: 'john.doe@example.com') }
+
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:surname) }
     it { should validate_presence_of(:email) }
