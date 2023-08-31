@@ -41,6 +41,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'pry'
+  gem 'bundler-audit', '~> 0.9.1' # https://rubydoc.info/gems/bundler-audit/frames
 end
 
 group :development do
