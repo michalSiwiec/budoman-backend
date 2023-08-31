@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_30_183208) do
+ActiveRecord::Schema.define(version: 2023_08_31_053337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -70,11 +70,11 @@ ActiveRecord::Schema.define(version: 2023_08_30_183208) do
   end
 
   create_table "products_orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "order_id"
-    t.uuid "product_id"
+    t.uuid "order_id", null: false
+    t.uuid "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_quantity"
+    t.integer "product_quantity", null: false
     t.index ["order_id"], name: "index_products_orders_on_order_id"
     t.index ["product_id"], name: "index_products_orders_on_product_id"
   end
