@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_08_31_053337) do
+ActiveRecord::Schema.define(version: 2023_08_31_055711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2023_08_31_053337) do
   end
 
   create_table "opinions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.text "content", null: false
+    t.text "content"
     t.integer "mark", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", null: false
@@ -80,8 +80,8 @@ ActiveRecord::Schema.define(version: 2023_08_31_053337) do
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", null: false
+    t.string "password_digest", null: false
     t.hstore "avatars", array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
