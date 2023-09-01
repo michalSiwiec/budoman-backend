@@ -1,62 +1,62 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '3.0.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.6'
+gem 'rails', '~> 7.0.7'
 # Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg', '~> 1.5.3'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 6.3.1'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.19'
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.16.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-gem 'rack-cors'
+gem 'rack-cors', '~> 2.0.1'
 # To comunicate with AWS
-gem 'aws-sdk-s3', '~> 1.112'
+gem 'aws-sdk-s3', '~> 1.134'
 # To use graphql
-gem 'graphql'
+gem 'graphql', '~> 2.1.0'
 # to process exel files
-gem 'rubyXL'
+gem 'rubyXL', '~> 3.4.25'
 # to generate token
-gem 'jwt'
+gem 'jwt', '~> 2.7.1'
 # to generate pdf
-gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf', '~> 2.7.0'
+gem 'wkhtmltopdf-binary', '~> 0.12.6'
 # to work with env variables
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.8.1'
 # to fix session on heroku
-gem 'rails_same_site_cookie'
+gem 'rails_same_site_cookie', '~> 0.1.9'
 # To proces async jobs
-gem 'sidekiq', '~> 6.5.9'
-gem 'redis', '~> 4.8.1'
+gem 'sidekiq', '~> 7.1.2'
+gem 'redis', '~> 5.0.7'
 # To track errors
-gem 'rollbar', '~> 3.4' # https://docs.rollbar.com/docs/ruby
+gem 'rollbar', '~> 3.4'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'pry'
-  gem 'bundler-audit', '~> 0.9.1' # https://rubydoc.info/gems/bundler-audit/frames
+  gem 'bundler-audit'
 end
 
 group :development do
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen', '~> 3.8.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'spring-watcher-listen'
   # to mount graphql panel
   gem 'graphiql-rails'
   gem 'rubocop', require: false
 end
 
 group :test do
-  gem 'rspec-rails' # https://rspec.info/documentation/5.0/rspec-rails/
-  gem 'factory_bot_rails' # https://www.rubydoc.info/gems/factory_bot_rails/6.2.0
-  gem 'shoulda-matchers' # https://matchers.shoulda.io/docs/v5.3.0/
-  gem 'database_cleaner' # https://github.com/DatabaseCleaner/database_cleaner
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'shoulda-matchers'
+  gem 'database_cleaner'
 end

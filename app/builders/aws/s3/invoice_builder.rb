@@ -31,7 +31,7 @@ module Aws
 
       def generate_invoice_in_base64
         presenter = OrderPresenter.new(@order)
-        pdf_html = ActionController::Base.new.render_to_string(file: PATH_TO_INVOICE_TEMPLATE, locals: { presenter: presenter })
+        pdf_html = ActionController::Base.render(inline: File.read(PATH_TO_INVOICE_TEMPLATE), locals: { presenter: presenter })
         WickedPdf.new.pdf_from_string(pdf_html)
       end
     end
