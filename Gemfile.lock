@@ -313,6 +313,7 @@ DEPENDENCIES
   sidekiq (~> 7.1.2)
   spring
   spring-watcher-listen
+  sprockets-rails (~> 3.4.2)
   tzinfo-data
   wicked_pdf (~> 2.7.0)
   wkhtmltopdf-binary (~> 0.12.6)

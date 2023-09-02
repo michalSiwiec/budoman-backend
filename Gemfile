@@ -35,6 +35,8 @@ gem 'sidekiq', '~> 7.1.2'
 gem 'redis', '~> 5.0.7'
 # To track errors
 gem 'rollbar', '~> 3.4'
+# To serving assets
+gem 'sprockets-rails', '~> 3.4.2'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
