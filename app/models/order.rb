@@ -8,7 +8,7 @@ class Order < ApplicationRecord
   ].freeze
 
   ALLOWED_PAYMENT_METHOD = %w[cash_payment traditional_transfer].freeze
-  PHONE_NUMBER_REGEX = /\A[0-9]{9}\z/.freeze
+  PHONE_NUMBER_REGEX = /\A[0-9]{9}\z/
 
   belongs_to :user
   has_many :products_orders, dependent: :destroy

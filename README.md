@@ -4,14 +4,14 @@
 Budoman-backend is a backend app for construction shop.
 This is developed using:
 
-- [Ruby](https://ruby-doc.org/) (2.7.2)
-- [Rails](https://guides.rubyonrails.org/) (5.2.6)
+- [Ruby](https://ruby-doc.org/3.0.6/) (3.0.6)
+- [Rails](https://guides.rubyonrails.org/) (7.0.7)
 - [PostgreSQL](https://www.postgresql.org/) (14.0.0)
-- [Graphql](https://graphql-ruby.org/) (2.0.15)
-- [RSpec](https://rspec.info/documentation/) (5.0.0)
+- [Graphql](https://graphql-ruby.org/) (2.1.0)
+- [RSpec](https://rspec.info/documentation/) (6.0.3)
 
 ## Requirements
-- Ruby 2.7.2
+- Ruby 3.0.6
 - PostgreSQL 14
 
 ## Application setup
