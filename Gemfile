@@ -37,6 +37,12 @@ gem 'redis', '~> 5.0.7'
 gem 'rollbar', '~> 3.4'
 # To serving assets
 gem 'sprockets-rails', '~> 3.4.2'
+# To publish messages on Kafka
+gem 'waterdrop', '~> 2.6.7'
+# To work with a avro schemas
+gem 'avro_turf', '~> 1.12.0'
+# To implement singleton pattern
+gem 'singleton', '~> 0.1.1'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

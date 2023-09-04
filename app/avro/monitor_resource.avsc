@@ -1,0 +1,60 @@
+{
+  "type": "record",
+  "name": "monitor_resource",
+  "fields": [
+    {
+      "name": "total_memory",
+      "type": "string"
+    },
+    {
+      "name": "used_memory",
+      "type": "string"
+    },
+    {
+      "name": "free_memory",
+      "type": "string"
+    },
+    {
+      "name": "swap_total_memory",
+      "type": "string"
+    },
+    {
+      "name": "swap_used_memory",
+      "type": "string"
+    },
+    {
+      "name": "swap_free_memory",
+      "type": "string"
+    },
+    {
+      "name": "user_cpu_time",
+      "type": "string"
+    },
+    {
+      "name": "system_cpu_time",
+      "type": "string"
+    },
+    {
+      "name": "logged_users",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    },
+    {
+      "name": "recent_actions",
+      "type": {
+        "type": "array",
+        "items": "string"
+      }
+    },
+    {
+      "name": "public_ip",
+      "type": "string"
+    },
+    {
+      "name": "private_ip",
+      "type": "string"
+    }
+  ]
+}

@@ -37,5 +37,9 @@ module Types
     field :add_order,
           mutation: Mutations::AddOrderMutation,
           description: "Add user's order"
+
+    field :monitor_resources,
+          mutation: ::Mutations::MonitorResourcesMutation,
+          description: "Publish resources's state on Kafka for monitoring purpose"
   end
 end
