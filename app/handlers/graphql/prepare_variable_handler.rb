@@ -8,7 +8,7 @@ module Graphql
     private
 
     def prepare_context(params:, session:)
-      variables = prepare_variables(variables_param: params.fetch(:variables))
+      variables = prepare_variables(variables_param: params.fetch(:variables, nil))
       query = params.fetch(:query)
       operation_name = params.fetch(:operationName, nil)
       context = { session: session, current_user: current_user(session: session) }
