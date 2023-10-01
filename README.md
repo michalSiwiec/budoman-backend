@@ -28,6 +28,7 @@ docker-compose up # App should be available on port 3333
 ```bash
 bundle exec rubocop # to turn on linter
 bundle exec rspec # to turn on unit tests
+bundle-audit check --update # to turn on bundle audit
 ```
 
 ## Tips

@@ -31,7 +31,7 @@ gem 'dotenv-rails', '~> 2.8.1'
 # to fix session on heroku
 gem 'rails_same_site_cookie', '~> 0.1.9'
 # To proces async jobs
-gem 'sidekiq', '~> 7.1.2'
+gem 'sidekiq', '~> 7.1.4'
 gem 'redis', '~> 5.0.7'
 # To track errors
 gem 'rollbar', '~> 3.4'
