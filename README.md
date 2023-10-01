@@ -15,7 +15,7 @@ This is developed using:
 - PostgreSQL 14
 
 ## Application setup
-1. Make sure that you have filled .env file
+1. Make sure that you have filled .env, config/database.yml files
 2. Make sure that you have Docker installed on your local machine
 3. Make sure that you have generated ssh keys with default path
 4. Run the following commands to start the application:
