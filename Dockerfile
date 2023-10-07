@@ -12,7 +12,6 @@ RUN apt-get update && \
 # INSTALL REQUIRED PACKETS
 RUN apt-get install -y cron build-essential libpq-dev
 
-
 # INSTALL APPLICATION
 WORKDIR /budoman-backend
 COPY . /budoman-backend/

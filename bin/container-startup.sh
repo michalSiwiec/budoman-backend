@@ -10,15 +10,13 @@ service cron start
 bundle exec sidekiq &
 
 # Setup database
-rails runner "ActiveRecord::Base.establish_connection; exit ActiveRecord::Base.connection.active?" 
-DB_EXISTS=$?
+DB_EXISTS=$(rails runner "puts (::ActiveRecord::Base.connection_pool.with_connection(&:active?) rescue false)")
 
-# If the database does not exist, create and seed it. Otherwise perform migration
-if [[ $DB_EXISTS -ne 0 ]]; then
-    echo "Database does not exist. Setuping database..."
-    rails db:create db:migrate db:seed
+if [ "$DB_EXISTS" = "false" ]; then
+  echo "Database does not exist or is not accessible. Creating database, running migrations, and seeding..."
+  rails db:create db:migrate db:seed
 else
-  echo "Database exists. Performing migration..."
+  echo "Database exists. Running migrations..."
   rails db:migrate
 fi
 

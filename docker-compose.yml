@@ -3,6 +3,7 @@ services:
   app:
     depends_on:
       - postgres
+      - redis
     build:
       context: .
       dockerfile: Dockerfile
