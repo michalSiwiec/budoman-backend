@@ -24,3 +24,4 @@
 
 /config/database.yml
 .env
+bin/monitor_resources.sh
