@@ -4,37 +4,21 @@ class UserValidator < ActiveModel::Validator
   ALLOWED_KEY = %w[main storage_path].freeze
 
   def validate(record)
-    record.avatars.each do |avatar|
-      @avatar = avatar
-      if avatar_additional_keys? || !demand_keys?
-        return record.errors.add(:avatars, "should have fields: #{ALLOWED_KEY} but got: #{@avatar.keys}")
-      end
+    return record.errors.add(:avatars, 'should be Array type!') unless record.avatars.is_a?(Array)
 
-      unless correct_types?
-        return record.errors.add(
-          :avatars,
-          "main should be Boolean, storage_path should be String but got
-            main: #{@avatar['main'].class}, storage_path: #{@avatar['storage_path'].class}"
-        )
-      end
+    record.avatars.each do |avatar|
+      return record.errors.add(:avatars, "should contain exactly: #{ALLOWED_KEY.join(' ,')} keys, contains: #{avatar.keys.join(' ,')}") unless contains_only_required_fields?(avatar: avatar)
+      return record.errors.add(:avatars, 'main should be boolean type, storage_path should be string type!') unless contains_correct_types?(avatar: avatar)
     end
   end
 
   private
 
-  def avatar_additional_keys?
-    (@avatar.keys - ALLOWED_KEY).present?
+  def contains_only_required_fields?(avatar:)
+    avatar.keys.sort == ALLOWED_KEY.sort
   end
 
-  def demand_keys?
-    ALLOWED_KEY.each do |allowed_key|
-      return false unless @avatar.keys.include?(allowed_key)
-    end
-
-    true
-  end
-
-  def correct_types?
-    @avatar['main'].in?(%w[true false]) && @avatar['storage_path'].is_a?(String)
+  def contains_correct_types?(avatar:)
+    avatar['storage_path'].is_a?(String) && avatar['main'].in?(%w[true false])
   end
 end
