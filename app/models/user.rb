@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email,
             uniqueness: { message: 'is already taken!' }, format: { with: EMAIL_REGEX }
 
-  # validates_with UserValidator, fields: [:avatars]
+  validates_with UserValidator, fields: [:avatars]
 
   has_many :opinions, dependent: :destroy
   has_many :orders, dependent: :destroy
