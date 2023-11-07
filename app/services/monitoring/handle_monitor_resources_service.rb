@@ -35,9 +35,9 @@ module Monitoring
 
     def handle_error(error:)
       MonitoringSystemLoggerSingleton.instance.warn("Event publication failed!\n\
-                                                    Context: #{error&.rollbar_context || {}}\n\
-                                                    Error message: #{error.message}\n\
-                                                    Error backtrace:\n#{error.backtrace.first(3).join("\n")}\n")
+                                                     Context: #{error&.rollbar_context || {}}\n\
+                                                     Error message: #{error.message}\n\
+                                                     Error backtrace:\n#{error.backtrace.first(3).join("\n")}\n")
       Rollbar.warn(error)
       false
     end
