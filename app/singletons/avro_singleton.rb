@@ -1,11 +1,13 @@
+require 'avro_turf/messaging'
+
 class AvroSingleton
   include Singleton
 
   def initialize
-    @avro = AvroTurf.new(schemas_path: 'app/avro')
+    @avro = AvroTurf::Messaging.new(registry_url: ENV['SCHEMA_REGISTRY_URL'])
   end
 
-  def encode(payload:, schema_name:, validate: true)
-    @avro.encode(payload, schema_name: schema_name, validate: validate)
+  def encode(payload:, subject:, version: 1, validate: true)
+    @avro.encode(payload, subject: subject, version: version, validate: validate)
   end
 end

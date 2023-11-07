@@ -5,10 +5,10 @@ class GraphqlController < ApplicationController
     chain = prepare_handlers_chain
     context = prepare_context
     result = chain.call(handler_context: context)
+    validate_result!(result: result)
     render json: result
   rescue StandardError => e
-    raise e unless Rails.env.development?
-    handle_error_in_development(e)
+    handle_error(e)
   end
 
   private
@@ -23,7 +23,11 @@ class GraphqlController < ApplicationController
     { params: params, session: session }
   end
 
-  def handle_error_in_development(e)
+  def validate_result!(result:)
+    raise StandardError, result['errors'] if result['errors'].present?
+  end
+
+  def handle_error(e)
     logger.error e.message
     logger.error e.backtrace.join("\n")
     Rollbar.error(e)
