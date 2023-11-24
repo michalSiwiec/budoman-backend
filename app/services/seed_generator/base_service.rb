@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require 'open-uri'
-
 module SeedGenerator
   class BaseService < ::BaseService
-    WORK_BOOK_PATH = 'https://olx-development.s3.eu-central-1.amazonaws.com/seeds/Seeds.xlsx'
+    SEED_FILE_KEY = 'seeds/Seeds.xlsx'
     COLUMN_NAME_ROW_INDEX = 0
     COLUMN_NAME_Y_OFFSET = 1
 
@@ -20,7 +18,9 @@ module SeedGenerator
     private
 
     def workbook
-      buffer = URI.open(WORK_BOOK_PATH).read
+      aws_client = Aws::S3::Client.new
+      object = aws_client.get_object(bucket: Rails.configuration.aws_bucket, key: SEED_FILE_KEY)
+      buffer = object.body.read
       workbook = RubyXL::Parser.parse_buffer(buffer)
       workbook
     end

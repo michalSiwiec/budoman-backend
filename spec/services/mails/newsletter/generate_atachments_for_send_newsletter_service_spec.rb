@@ -2,10 +2,14 @@ describe Mails::Newsletter::GenerateAtachmentsForSendNewsletterService, type: :s
   describe '#call' do
     subject { described_class.call }
 
-    let(:file_to_string_service) { instance_double(ConvertFileToStringService, call: 'file_as_string') }
+    let(:s3_service) do
+      string_io_instance = instance_double(StringIO, string: 'file_as_string')
+      s3_object_instance = instance_double(Aws::S3::Types::GetObjectOutput, body: string_io_instance)
+      instance_double(Aws::S3::FetchObjectService, call: s3_object_instance)
+    end
 
     before do
-      allow(ConvertFileToStringService).to receive(:new).and_return(file_to_string_service)
+      allow(Aws::S3::FetchObjectService).to receive(:new).and_return(s3_service)
     end
 
     it 'returns array with atachments' do
