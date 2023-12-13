@@ -1,3 +1,5 @@
+# TODO: I remove bucket
+
 module Aws
   module S3
     class AvatarBuilder < BaseBuilder
