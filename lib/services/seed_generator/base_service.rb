@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module SeedGenerator
-  class BaseService < ::BaseService
+  class BaseService
     SEED_FILE_KEY = 'seeds/Seeds.xlsx'
     COLUMN_NAME_ROW_INDEX = 0
     COLUMN_NAME_Y_OFFSET = 1
