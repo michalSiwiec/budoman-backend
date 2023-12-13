@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'base_service'
+
 module SeedGenerator
   class ProductsService < BaseService
     private

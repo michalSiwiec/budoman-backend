@@ -1,28 +1,39 @@
 # frozen_string_literal: true
 
+require_relative 'base_service'
+
 module SeedGenerator
-  class ProductCategoriesService < BaseService
+  class UsersService < BaseService
     private
 
-    SHEET_NAME = 'ProductsCategories'
-    MODEL = ProductCategory
+    SHEET_NAME = 'Users'
+    MODEL = User
+
+    def create_records
+      generate_records_attributes.each do |attr|
+        user = User.find_by(email: attr['email'])
+        next if user
+
+        User.create!(attr)
+      end
+    end
 
     def generate_records_attributes
-      records_attributes = []
+      records_properties = []
 
       rows_quantity.times do |row_number|
-        attributes = {}
+        properties_hash = {}
         @row_number = row_number
 
         column_quantity.times do |column_number|
           @column_number = column_number
-          attributes[column_name] = column_value
+          properties_hash[column_name] = column_value
         end
 
-        records_attributes << attributes
+        records_properties << properties_hash
       end
 
-      records_attributes
+      records_properties
     end
 
     def column_name
@@ -34,7 +45,7 @@ module SeedGenerator
     end
 
     def rows_quantity
-      5
+      2
     end
   end
 end
