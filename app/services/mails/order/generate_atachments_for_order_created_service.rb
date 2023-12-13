@@ -16,7 +16,7 @@ module Mails
 
       def invoice
         invoice_key = "users/#{@order.user.id}/invoices/#{@order.id}.pdf"
-        object = ::Aws::S3::FetchObjectService.call(key: invoice_key)
+        object = ::Aws::S3Service.new.get_object(key: invoice_key)
         object.body.string
       end
     end

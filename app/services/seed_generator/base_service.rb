@@ -18,8 +18,8 @@ module SeedGenerator
     private
 
     def workbook
-      aws_client = Aws::S3::Client.new
-      object = aws_client.get_object(bucket: Rails.configuration.aws_bucket, key: SEED_FILE_KEY)
+      s3_service = ::Aws::S3Service.new
+      object = s3_service.get_object(key: SEED_FILE_KEY)
       buffer = object.body.read
       workbook = RubyXL::Parser.parse_buffer(buffer)
       workbook
