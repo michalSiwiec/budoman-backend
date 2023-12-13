@@ -49,7 +49,6 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'pry'
-  gem 'bundler-audit'
 end
 
 group :development do
@@ -60,6 +59,11 @@ group :development do
   # to mount graphql panel
   gem 'graphiql-rails'
   gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'rubocop-graphql', require: false
+  gem 'bundler-audit'
 end
 
 group :test do

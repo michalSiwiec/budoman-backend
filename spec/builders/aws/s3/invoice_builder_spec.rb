@@ -14,7 +14,7 @@ describe Aws::S3::InvoiceBuilder, type: :builder do
     end
 
     it 'returns proper payload' do
-      expect(subject).to eq({ bucket: 'olx-development',
+      expect(subject).to eq({ bucket: 'budoman-development',
                               path: 'users/b612c713-b328-43af-b8e2-c1704e68a463/invoices/552967ef-8ed8-4b2f-8088-4e0ed5347660.pdf',
                               body: 'pdf_from_string' })
     end

@@ -7,7 +7,7 @@ describe Aws::S3::AvatarBuilder, type: :builder do
 
     it { expect(subject.fetch(:base64).force_encoding('ASCII-8BIT')).to eq("y\xF8!".force_encoding('ASCII-8BIT')) }
     it { expect(subject.fetch(:path)).to eq('users/18c9bb53-3d92-4e8d-944c-660ddb5a2228/avatars/file_name') }
-    it { expect(subject.fetch(:bucket)).to eq('olx-development') }
-    it { expect(subject.fetch(:details)).to eq({ main: true, storage_path: 'https://olx-development.s3.eu-central-1.amazonaws.com/users/18c9bb53-3d92-4e8d-944c-660ddb5a2228/avatars/file_name' }) }
+    it { expect(subject.fetch(:bucket)).to eq('budoman-development') }
+    it { expect(subject.fetch(:details)).to eq({ main: true, storage_path: 'https://budoman-development.s3.eu-central-1.amazonaws.com/users/18c9bb53-3d92-4e8d-944c-660ddb5a2228/avatars/file_name' }) }
   end
 end
