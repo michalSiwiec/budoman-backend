@@ -1,51 +1,51 @@
 # frozen_string_literal: true
 
-require_relative 'base_service'
+module Services
+  module SeedGenerator
+    class UsersService < BaseService
+      private
 
-module SeedGenerator
-  class UsersService < BaseService
-    private
+      SHEET_NAME = 'Users'
+      MODEL = User
 
-    SHEET_NAME = 'Users'
-    MODEL = User
+      def create_records
+        generate_records_attributes.each do |attr|
+          user = User.find_by(email: attr['email'])
+          next if user
 
-    def create_records
-      generate_records_attributes.each do |attr|
-        user = User.find_by(email: attr['email'])
-        next if user
-
-        User.create!(attr)
+          User.create!(attr)
+        end
       end
-    end
 
-    def generate_records_attributes
-      records_properties = []
+      def generate_records_attributes
+        records_properties = []
 
-      rows_quantity.times do |row_number|
-        properties_hash = {}
-        @row_number = row_number
+        rows_quantity.times do |row_number|
+          properties_hash = {}
+          @row_number = row_number
 
-        column_quantity.times do |column_number|
-          @column_number = column_number
-          properties_hash[column_name] = column_value
+          column_quantity.times do |column_number|
+            @column_number = column_number
+            properties_hash[column_name] = column_value
+          end
+
+          records_properties << properties_hash
         end
 
-        records_properties << properties_hash
+        records_properties
       end
 
-      records_properties
-    end
+      def column_name
+        @work_sheet[COLUMN_NAME_ROW_INDEX][@column_number].value
+      end
 
-    def column_name
-      @work_sheet[COLUMN_NAME_ROW_INDEX][@column_number].value
-    end
+      def column_value
+        @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number].value
+      end
 
-    def column_value
-      @work_sheet[@row_number + COLUMN_NAME_Y_OFFSET][@column_number].value
-    end
-
-    def rows_quantity
-      2
+      def rows_quantity
+        2
+      end
     end
   end
 end
