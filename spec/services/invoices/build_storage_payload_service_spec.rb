@@ -1,6 +1,6 @@
-describe Aws::S3::InvoiceBuilder, type: :builder do
+describe Invoices::BuildStoragePayloadService, type: :builder do
   describe '#build' do
-    subject { described_class.build(order: order) }
+    subject { described_class.call(order: order) }
 
     let(:order) do
       user = create(:user, id: 'b612c713-b328-43af-b8e2-c1704e68a463')

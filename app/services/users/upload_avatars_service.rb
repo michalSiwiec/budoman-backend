@@ -9,7 +9,7 @@ module Users
 
     def call
       @avatars.each do |avatar|
-        payload = ::Aws::S3::AvatarBuilder.build(user_id: @user_id, avatar: avatar)
+        payload = ::Users::BuildAvatarPayloadService.call(user_id: @user_id, avatar: avatar)
         upload_avatar_to_storage(payload: payload)
         save_avatar_details(payload: payload)
       end
