@@ -4,11 +4,11 @@ describe Invoices::UploadOnStorageService, type: :service do
 
 		let(:order) { create(:order) }
 		let(:s3_service) { instance_double(Aws::S3Service, put_object: true) }
-		let(:invoice_builder) { instance_double(Aws::S3::InvoiceBuilder, build: { bucket: 'bucket', path: 'path', body: 'body' }) }
+		let(:storage_payload_service) { instance_double(Invoices::BuildStoragePayloadService, call: { bucket: 'bucket', path: 'path', body: 'body' }) }
 
 		before do
 			allow(Aws::S3Service).to receive(:new).and_return(s3_service)
-			allow(Aws::S3::InvoiceBuilder).to receive(:new).and_return(invoice_builder)
+			allow(Invoices::BuildStoragePayloadService).to receive(:new).and_return(storage_payload_service)
 		end
 
 		it 'upload invoice on storage' do

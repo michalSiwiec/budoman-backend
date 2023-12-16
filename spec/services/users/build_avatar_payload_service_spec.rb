@@ -1,6 +1,6 @@
-describe Aws::S3::AvatarBuilder, type: :builder do
+describe Users::BuildAvatarPayloadService, type: :builder do
   describe  '#build' do
-    subject { described_class.build(user_id: user.id, avatar: avatar) }
+    subject { described_class.call(user_id: user.id, avatar: avatar) }
 
     let(:user) { create(:user, id: '18c9bb53-3d92-4e8d-944c-660ddb5a2228') }
     let(:avatar) { { base64: 'abcd,efgh', file_name: 'file_name', main: true } }

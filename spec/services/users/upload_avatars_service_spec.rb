@@ -6,15 +6,15 @@ describe Users::UploadAvatarsService, type: :service do
     let(:avatars) { [instance_double('Avatar'), instance_double('Avatar')] }
 
     let(:s3_service) { instance_double(Aws::S3Service, put_object: true) }
-    let(:avatar_builder) { instance_double(Aws::S3::AvatarBuilder) }
+    let(:build_avatar_payload) { instance_double(Users::BuildAvatarPayloadService) }
 
     before do
       allow(Aws::S3Service).to receive(:new).and_return(s3_service)
-      allow(Aws::S3::AvatarBuilder).to receive(:new).and_return(avatar_builder)
+      allow(Users::BuildAvatarPayloadService).to receive(:new).and_return(build_avatar_payload)
 
-      allow(avatar_builder).to receive(:build)
-                           .and_return({ base64: 'base64_1', bucket: 'bucket_1', path: 'path_1', details: 'details_1' },
-                                       { base64: 'base64_2', bucket: 'bucket_2', path: 'path_2', details: 'details_2' })
+      allow(build_avatar_payload).to receive(:call)
+                                 .and_return({ base64: 'base64_1', bucket: 'bucket_1', path: 'path_1', details: 'details_1' },
+                                             { base64: 'base64_2', bucket: 'bucket_2', path: 'path_2', details: 'details_2' })
     end
 
     it 'upload two avatars on storage' do

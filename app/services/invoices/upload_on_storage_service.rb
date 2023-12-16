@@ -6,14 +6,14 @@ module Invoices
     end
 
     def call
-      invoice_payload = generate_invoice_payload
+      invoice_payload = build_invoice_payload
       upload_on_storage(payload: invoice_payload)
     end
 
     private
 
-    def generate_invoice_payload
-      ::Aws::S3::InvoiceBuilder.build(order: @order)
+    def build_invoice_payload
+      ::Invoices::BuildStoragePayloadService.call(order: @order)
     end
 
     def upload_on_storage(payload:)

@@ -15,7 +15,7 @@ module Aws
     end
 
     def put_object(key:, body:)
-      @aws_client.put_object(bucket: @bucket, key: key, body: body)
+      @client.put_object(bucket: @bucket, key: key, body: body)
     end
 
     def delete_object(key:)
