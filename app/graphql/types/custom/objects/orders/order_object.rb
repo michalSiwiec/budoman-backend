@@ -18,7 +18,7 @@ module Types
           field :created_at, GraphQL::Types::ISO8601DateTime, null: false
 
           def total_price
-            object.total_price
+            ::Orders::CalculateTotalPriceService.call(order: object)
           end
         end
       end

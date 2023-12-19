@@ -16,18 +16,4 @@ class Order < ApplicationRecord
   validates :delivery_method, inclusion: { in: DELIVERIES_DETAILS.pluck(:method) }
   validates :payment_method, inclusion: { in: ALLOWED_PAYMENT_METHOD }
   validates :phone_number, format: { with: PHONE_NUMBER_REGEX }
-
-  def total_price
-    [price_for_products, price_for_delivery].flatten.sum
-  end
-
-  private
-
-  def price_for_products
-    products_orders.map { |product_order| product_order.product_quantity * product_order.product.price }
-  end
-
-  def price_for_delivery
-    DELIVERIES_DETAILS.find { |delivery_details| delivery_details.fetch(:method) == delivery_method }.fetch(:price)
-  end
 end
