@@ -1,5 +1,7 @@
 module Newsletters
-  class UnsubscribeFromNewsletterService < BaseService
+  class UnsubscribeFromNewsletterService
+    extend Utils::CallableObject
+
     def initialize(email:)
       super()
       @email = email

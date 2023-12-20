@@ -1,5 +1,7 @@
 module Invoices
-  class UploadOnStorageService < BaseService
+  class UploadOnStorageService
+    extend Utils::CallableObject
+
     def initialize(order:)
       super()
       @order = order
