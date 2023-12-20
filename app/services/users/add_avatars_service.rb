@@ -1,5 +1,7 @@
 module Users
-  class AddAvatarsService < BaseService
+  class AddAvatarsService
+    extend Utils::CallableObject
+
     def initialize(user:, avatars:)
       super()
       @user = user

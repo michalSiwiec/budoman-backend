@@ -11,7 +11,7 @@ module Aws
     end
 
     def list_objects(directory_name:)
-      @client.list_objects(prefix: directory_name)
+      @client.list_objects(bucket: @bucket, prefix: directory_name)
     end
 
     def put_object(key:, body:)

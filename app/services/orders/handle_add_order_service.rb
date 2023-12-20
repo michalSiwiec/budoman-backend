@@ -1,26 +1,32 @@
 module Orders
-  class HandleAddOrderService < BaseService
+  class HandleAddOrderService
+    extend Utils::CallableObject
+
     def initialize(params:)
       super()
-      @order = prepare_order(params: params)
-      @products_order_params = params.fetch(:products_order)
+      @order_params = params.except(:products_order)
+      @order_products_params = params.fetch(:products_order)
     end
 
     def call
-      composite = ::BaseComposite.new
-      composite.add_task(task: ::Orders::AddOrderService.new(order: @order, products_order_params: @products_order_params))
-      composite.add_task(task: ::Invoices::UploadOnStorageService.new(order: @order))
-      composite.add_task(task: ::Orders::SendOrderEmailAdapter.new(order: @order))
-      composite.call
-
-      @order
+      order = add_order
+      upload_on_storage(order: order)
+      send_order_created_email(order: order)
+      order
     end
 
     private
 
-    def prepare_order(params:)
-      order_params = params.except(:products_order)
-      Order.new(order_params)
+    def add_order
+      ::Orders::AddOrderService.call(order_params: @order_params, order_products_params: @order_products_params)
+    end
+
+    def upload_on_storage(order:)
+      ::Invoices::UploadOnStorageService.call(order: order)
+    end
+
+    def send_order_created_email(order:)
+      OrderMailer.with(order: order).order_created.deliver_later(queue: :order)
     end
   end
 end

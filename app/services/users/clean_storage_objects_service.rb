@@ -1,5 +1,7 @@
 module Users
-  class CleanStorageObjectsService < BaseService
+  class CleanStorageObjectsService
+    extend Utils::CallableObject
+
     def initialize(user:)
       super()
       @user = user
