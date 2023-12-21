@@ -3,7 +3,7 @@ module Services
     class PublishService
       extend Utils::CallableObject
 
-      PublishOnStreamPlatformError = Class.new(RollbarError)
+      PublishOnStreamPlatformError = Class.new(Errors::RollbarError)
 
       def initialize(topic:, payload:, log_file_name:)
         super()

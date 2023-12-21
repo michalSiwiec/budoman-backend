@@ -5,8 +5,8 @@ module Services
     class ValidateAndEncodePayloadService
       extend Utils::CallableObject
 
-      SchemaNotFoundError = Class.new(RollbarError)
-      PayloadNotValidError = Class.new(RollbarError)
+      SchemaNotFoundError = Class.new(Errors::RollbarError)
+      PayloadNotValidError = Class.new(Errors::RollbarError)
 
       def initialize(payload:, schema_name:)
         super()

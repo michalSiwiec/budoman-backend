@@ -4,7 +4,7 @@ module Services
       extend Utils::CallableObject
       include Utils::ParamsParser
 
-      BuildMonitorResourcePayloadError = Class.new(RollbarError)
+      BuildMonitorResourcePayloadError = Class.new(Errors::RollbarError)
 
       def initialize(params:)
         super()
