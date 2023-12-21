@@ -2,7 +2,7 @@ module Invoices
   class BuildStoragePayloadService
     extend Utils::CallableObject
 
-    GeneratingInvoicePayloadError = Class.new(RollbarError)
+    GeneratingInvoicePayloadError = Class.new(Errors::RollbarError)
 
     PATH_TO_INVOICE_TEMPLATE = 'app/views/invoice.html.erb'.freeze
 
