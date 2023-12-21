@@ -8,7 +8,7 @@ module Users
     end
 
     def call
-      s3_service = ::Aws::S3Service.new
+      s3_service = ::Services::Aws::S3Service.new
       directory_name = "users/#{@user.id}"
       user_objects = s3_service.list_objects(directory_name: directory_name).contents
 

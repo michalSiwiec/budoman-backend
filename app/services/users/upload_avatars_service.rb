@@ -20,7 +20,7 @@ module Users
     private
 
     def upload_avatar_to_storage(payload:)
-      s3_service = ::Aws::S3Service.new
+      s3_service = ::Services::Aws::S3Service.new
       s3_service.put_object(body: payload.fetch(:base64), key: payload.fetch(:path))
     end
 
