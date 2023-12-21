@@ -11,7 +11,7 @@ module Mails
 
       def construction_presentation
         construction_presentation_key = 'documents/prezentacja-budowlana.pptx'
-        object = ::Aws::S3Service.new.get_object(key: construction_presentation_key)
+        object = ::Services::Aws::S3Service.new.get_object(key: construction_presentation_key)
         object.body.string
       end
     end

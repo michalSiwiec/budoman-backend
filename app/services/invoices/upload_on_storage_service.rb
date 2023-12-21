@@ -19,7 +19,7 @@ module Invoices
     end
 
     def upload_on_storage(payload:)
-      ::Aws::S3Service.new.put_object(key: payload.fetch(:path), body: payload.fetch(:body))
+      ::Services::Aws::S3Service.new.put_object(key: payload.fetch(:path), body: payload.fetch(:body))
     end
   end
 end

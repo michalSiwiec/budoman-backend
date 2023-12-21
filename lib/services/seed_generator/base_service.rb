@@ -21,7 +21,7 @@ module Services
       private
 
       def workbook
-        s3_service = ::Aws::S3Service.new
+        s3_service = ::Services::Aws::S3Service.new
         object = s3_service.get_object(key: SEED_FILE_KEY)
         buffer = object.body.read
         workbook = RubyXL::Parser.parse_buffer(buffer)

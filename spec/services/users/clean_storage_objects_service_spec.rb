@@ -3,10 +3,10 @@ describe Users::CleanStorageObjectsService, type: :service do
 		subject { described_class.call(user: user) }
 
 		let(:user) { create(:user) }
-		let(:s3_service) { instance_double(Aws::S3Service, delete_object: true) }
+		let(:s3_service) { instance_double(Services::Aws::S3Service, delete_object: true) }
 
 		before do
-			allow(Aws::S3Service).to receive(:new).and_return(s3_service)
+			allow(Services::Aws::S3Service).to receive(:new).and_return(s3_service)
 			allow(s3_service).to receive_message_chain(:list_objects, :contents)
 											 .and_return([instance_double('S3 object', key: 'key1'),
 																	  instance_double('S3 object', key: 'key2'),

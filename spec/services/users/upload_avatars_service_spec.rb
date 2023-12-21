@@ -5,11 +5,11 @@ describe Users::UploadAvatarsService, type: :service do
     let(:user_id) { create(:user).id }
     let(:avatars) { [instance_double('Avatar'), instance_double('Avatar')] }
 
-    let(:s3_service) { instance_double(Aws::S3Service, put_object: true) }
+    let(:s3_service) { instance_double(Services::Aws::S3Service, put_object: true) }
     let(:build_avatar_payload) { instance_double(Users::BuildAvatarPayloadService) }
 
     before do
-      allow(Aws::S3Service).to receive(:new).and_return(s3_service)
+      allow(Services::Aws::S3Service).to receive(:new).and_return(s3_service)
       allow(Users::BuildAvatarPayloadService).to receive(:new).and_return(build_avatar_payload)
 
       allow(build_avatar_payload).to receive(:call)
