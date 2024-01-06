@@ -7,7 +7,7 @@ module Mutations
 
     def resolve(params)
       super(params)
-      ::Monitoring::HandleMonitorResourcesService.call(params: @params)
+      ::Services::Monitoring::HandleMonitorResourcesService.call(params: @params)
     end
   end
 end

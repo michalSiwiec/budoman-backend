@@ -15,9 +15,9 @@ module Mails
       private
 
       def invoice
-        config = Rails.application.config
-        url_to_invoice = "https://#{config.aws_bucket}.#{config.aws_path}/users/#{@order.user.id}/invoices/#{@order.id}.pdf"
-        ::ConvertFileToStringService.call(path_to_file: url_to_invoice)
+        invoice_key = "users/#{@order.user.id}/invoices/#{@order.id}.pdf"
+        object = ::Services::Aws::S3Service.new.get_object(key: invoice_key)
+        object.body.string
       end
     end
   end

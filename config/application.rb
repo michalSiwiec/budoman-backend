@@ -18,7 +18,7 @@ Bundler.require(*Rails.groups)
 
 module OlxBackend
   class Application < Rails::Application
-    config.load_defaults 5.2
+    config.load_defaults 7.1
     # For authorization
     config.api_only = false
     config.middleware.use ActionDispatch::Cookies
@@ -42,5 +42,7 @@ module OlxBackend
     # For async jobs
     config.active_job.queue_adapter = :sidekiq
     config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+    # To use code from /lib directory
+    config.autoload_lib(ignore: %w[tasks])
   end
 end

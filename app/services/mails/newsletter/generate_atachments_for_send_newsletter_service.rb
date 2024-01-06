@@ -10,9 +10,9 @@ module Mails
       private
 
       def construction_presentation
-        config = Rails.application.config
-        url_to_invoice = "https://#{config.aws_bucket}.#{config.aws_path}/documents/prezentacja-budowlana.pptx"
-        ::ConvertFileToStringService.call(path_to_file: url_to_invoice)
+        construction_presentation_key = 'documents/prezentacja-budowlana.pptx'
+        object = ::Services::Aws::S3Service.new.get_object(key: construction_presentation_key)
+        object.body.string
       end
     end
   end

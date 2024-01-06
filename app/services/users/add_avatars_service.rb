@@ -1,6 +1,9 @@
 module Users
   class AddAvatarsService
+    extend Utils::CallableObject
+
     def initialize(user:, avatars:)
+      super()
       @user = user
       @avatars = avatars
     end
@@ -13,7 +16,7 @@ module Users
     private
 
     def upload_avatars_to_storage
-      ::Aws::S3::AvatarsUploaderService.call(avatars: @avatars, user_id: @user.id)
+      ::Users::UploadAvatarsService.call(avatars: @avatars, user_id: @user.id)
     end
 
     def update_user(uploaded_avatars_details:)

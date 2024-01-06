@@ -1,5 +1,7 @@
 module Users
   class DestroyUserService
+    extend Utils::CallableObject
+
     def initialize(user:)
       @user = user
     end

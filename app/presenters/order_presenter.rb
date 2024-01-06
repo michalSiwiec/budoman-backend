@@ -55,6 +55,6 @@ class OrderPresenter
   end
 
   def total_price
-    @order.total_price
+    ::Orders::CalculateTotalPriceService.call(order: @order)
   end
 end

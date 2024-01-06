@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class UserValidator < ActiveModel::Validator
-  ALLOWED_KEY = %w[main storage_path].freeze
+  ALLOWED_KEY = %w[main bucket key].freeze
 
   def validate(record)
     return record.errors.add(:avatars, 'should be Array type!') unless record.avatars.is_a?(Array)
@@ -19,6 +19,6 @@ class UserValidator < ActiveModel::Validator
   end
 
   def contains_correct_types?(avatar:)
-    avatar['storage_path'].is_a?(String) && avatar['main'].in?(%w[true false])
+    avatar['bucket'].is_a?(String) && avatar['key'].is_a?(String) && avatar['main'].in?(%w[true false])
   end
 end
