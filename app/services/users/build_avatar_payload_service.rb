@@ -5,7 +5,6 @@ module Users
     def initialize(user_id:, avatar:)
       @user_id = user_id
       @avatar = avatar
-      @config = Rails.application.config
     end
 
     def call
@@ -16,7 +15,6 @@ module Users
       {
         base64: avatar_base64,
         path: path_to_file,
-        bucket: @config.aws_bucket,
         details: avatar_details
       }
     end
@@ -32,9 +30,7 @@ module Users
     end
 
     def generate_avatar_details(path_to_file:)
-      storage_path = "https://#{@config.aws_bucket}.#{@config.aws_path}/#{path_to_file}"
-
-      { main: @avatar.fetch(:main), storage_path: storage_path }
+      { main: @avatar.fetch(:main), bucket: Rails.application.config.aws_bucket, key: path_to_file }
     end
   end
 end

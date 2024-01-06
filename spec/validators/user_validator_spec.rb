@@ -11,16 +11,16 @@ describe UserValidator, type: :validator do
   end
 
   context 'when avatar does not contain required fields' do
-    let(:avatars) { [{ storage_path: '/path/to/avatar' }] }
+    let(:avatars) { [{ main: true }] }
 
     it do
       subject.save
-      expect(subject.errors[:avatars]).to include('should contain exactly: main ,storage_path keys, contains: storage_path')
+      expect(subject.errors[:avatars]).to include('should contain exactly: main ,bucket ,key keys, contains: main')
     end
   end
 
   context 'when avatar contains bad fields with incorrect types' do
-    let(:avatars) { [{ main: 'main', storage_path: 12 }] }
+    let(:avatars) { [{ main: 'main', key: 12, bucket: {} }] }
 
     it do
       subject.save

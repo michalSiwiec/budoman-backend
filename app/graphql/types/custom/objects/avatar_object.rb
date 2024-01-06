@@ -4,8 +4,9 @@ module Types
   module Custom
     module Objects
       class AvatarObject < Types::BaseObject
+        field :bucket, String, null: false
+        field :key, String, null: false
         field :main, String, null: false
-        field :storage_path, String, null: false
       end
     end
   end
