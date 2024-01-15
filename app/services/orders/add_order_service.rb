@@ -8,11 +8,13 @@ module Orders
     end
 
     def call
-      order = Order.new(@order_params)
-      add_products_to_order(order: order)
-      update_products_quantities(order: order)
-      order.save!
-      order
+      ActiveRecord::Base.transaction do
+        order = Order.new(@order_params)
+        add_products_to_order(order: order)
+        update_products_quantity(order: order)
+        order.save!
+        order
+      end
     end
 
     private
@@ -21,7 +23,7 @@ module Orders
       @order_products_params.each { |params| order.products_orders << ProductsOrder.new(params) }
     end
 
-    def update_products_quantities(order:)
+    def update_products_quantity(order:)
       order.products_orders.each do |product_order|
         product = product_order.product
         ordered_quantity = product_order.product_quantity

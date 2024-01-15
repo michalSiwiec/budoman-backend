@@ -8,7 +8,7 @@ gem 'rails', '~> 7.1.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.5.3'
 # Use Puma as the app server
-gem 'puma', '~> 6.3.1'
+gem 'puma', '~> 6.4.2'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.19'
 # Reduces boot times through caching; required in config/boot.rb
