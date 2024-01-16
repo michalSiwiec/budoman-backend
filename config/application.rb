@@ -20,11 +20,9 @@ module OlxBackend
   class Application < Rails::Application
     config.load_defaults 7.1
     # For authorization
-    config.api_only = false
+    config.api_only = true
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
-    # For work with S3
-    config.aws_path = 's3.eu-central-1.amazonaws.com'
     # For mailers
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.raise_delivery_errors = true
