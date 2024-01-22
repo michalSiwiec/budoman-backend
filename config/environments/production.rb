@@ -87,7 +87,7 @@ Rails.application.configure do
   # Require ssl
   config.force_ssl = true
   # Ensure cookies are only sent over HTTPS in production
-  config.action_dispatch.cookies_same_site_protection = :lax
+  config.action_dispatch.cookies_same_site_protection = :none
   # Use secure cookies
   config.action_dispatch.cookies_secure = true
 end
