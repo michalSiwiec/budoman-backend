@@ -83,4 +83,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Require ssl
+  config.force_ssl = true
+  # Ensure cookies are only sent over HTTPS in production
+  config.action_dispatch.cookies_same_site_protection = :lax
+  # Use secure cookies
+  config.action_dispatch.cookies_secure = true
 end
