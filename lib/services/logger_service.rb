@@ -11,5 +11,9 @@ module Services
     def info(message:)
       @logger.info(message)
     end
+
+    def error(message:)
+      @logger.error(message)
+    end
   end
 end

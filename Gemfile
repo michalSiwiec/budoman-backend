@@ -15,8 +15,10 @@ gem 'bcrypt', '~> 3.1.19'
 gem 'bootsnap', '>= 1.16.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors', '~> 2.0.1'
-# To comunicate with AWS
+# To comunicate with AWS's S3 service
 gem 'aws-sdk-s3', '~> 1.134'
+# To use AWS's lamba service
+gem 'aws-sdk-lambda', '~> 1.113'
 # To use graphql
 gem 'graphql', '~> 2.1.0'
 # to process exel files
