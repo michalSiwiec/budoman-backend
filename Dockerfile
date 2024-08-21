@@ -10,7 +10,9 @@ RUN apt-get update && \
     echo "$SSH_PUB_KEY" > /root/.ssh/authorized_keys
 
 # INSTALL REQUIRED PACKETS
-RUN apt-get install -y cron build-essential libpq-dev
+RUN apt-get install -y cron build-essential libpq-dev libxml2-dev libxslt1-dev zlib1g-dev
+
+ENV NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 # INSTALL APPLICATION
 WORKDIR /budoman-backend
