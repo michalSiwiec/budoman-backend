@@ -1,4 +1,4 @@
-describe Queries::IsUserLoggedQuery, type: :request do
+describe Queries::Users::IsUserLoggedQuery, type: :request do
   describe 'request' do
     subject { post '/graphql', params: { query: query } }
 

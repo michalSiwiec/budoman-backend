@@ -10,7 +10,7 @@ module Types
           description: 'Returns array of products. Possible passing filtering variables, among others: promoted'
 
     field :is_user_logged,
-          resolver: Queries::IsUserLoggedQuery,
+          resolver: Queries::Users::IsUserLoggedQuery,
           description: "Returns info if user's session is present"
 
     field :user,
