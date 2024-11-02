@@ -12,8 +12,8 @@ module Types
           field :street, String, null: false
           field :city, String, null: false
           field :postal_code, String, null: false
-          field :delivery_method, Types::Custom::Enums::DeliveryMethodEnum, null: false
-          field :payment_method, Types::Custom::Enums::PaymentMethodEnum, null: false
+          field :delivery_method, Types::Custom::Enums::Orders::DeliveryMethodEnum, null: false
+          field :payment_method, Types::Custom::Enums::Orders::PaymentMethodEnum, null: false
           field :total_price, Float, null: false
           field :created_at, GraphQL::Types::ISO8601DateTime, null: false
 

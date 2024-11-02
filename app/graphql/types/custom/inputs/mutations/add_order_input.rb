@@ -12,8 +12,8 @@ module Types
           argument :street, String, required: true
           argument :city, String, required: true
           argument :postal_code, String, required: true
-          argument :delivery_method, Types::Custom::Enums::DeliveryMethodEnum, required: true
-          argument :payment_method, Types::Custom::Enums::PaymentMethodEnum, required: true
+          argument :delivery_method, Types::Custom::Enums::Orders::DeliveryMethodEnum, required: true
+          argument :payment_method, Types::Custom::Enums::Orders::PaymentMethodEnum, required: true
           argument :user_id, ID, required: true
           argument :products_order, [Types::Custom::Inputs::Mutations::ProductsOrderInput], required: true
         end
