@@ -14,7 +14,7 @@ module Types
             argument :city, String, required: false
             argument :postal_code, String, required: false
             argument :password, String, required: false
-            argument :avatars, [Types::Custom::Inputs::Mutations::UpdateAvatarInput], required: false
+            argument :avatars, [Types::Custom::Inputs::Mutations::Users::UpdateAvatarInput], required: false
           end
         end
       end

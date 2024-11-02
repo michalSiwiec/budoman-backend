@@ -3,7 +3,7 @@
 module Mutations
   module Opinions
     class AddOpinionMutation < BaseMutation
-      argument :input, Types::Custom::Inputs::Mutations::OpinionInput, required: true
+      argument :input, Types::Custom::Inputs::Mutations::Opinions::OpinionInput, required: true
       type Types::Custom::Objects::Opinions::OpinionObject
 
       def resolve(params)

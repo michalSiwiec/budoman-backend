@@ -3,7 +3,7 @@
 module Mutations
   module Newsletter
     class SubscribeUserToNewsletterMutation < BaseMutation
-      argument :input, Types::Custom::Inputs::Mutations::SubscribeUserToNewsletterInput, required: true
+      argument :input, Types::Custom::Inputs::Mutations::Newsletter::SubscribeUserToNewsletterInput, required: true
       type Types::Custom::Objects::UserObject
 
       def resolve(params)
