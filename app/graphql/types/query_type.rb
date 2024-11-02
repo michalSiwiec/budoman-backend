@@ -6,7 +6,7 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :products,
-          resolver: Queries::ProductsQuery,
+          resolver: Queries::Products::ProductsQuery,
           description: 'Returns array of products. Possible passing filtering variables, among others: promoted'
 
     field :is_user_logged,
@@ -18,15 +18,15 @@ module Types
           description: 'Returns user'
 
     field :products_categories,
-          resolver: Queries::AllProductCategoriesQuery,
+          resolver: Queries::ProductCategories::ProductCategoriesQuery,
           description: 'Returns array fo products categories'
 
     field :opinions,
-          resolver: Queries::OpinionsQuery,
+          resolver: Queries::Opinions::OpinionsQuery,
           description: 'Returns array of opinions'
 
     field :orders,
-          resolver: Queries::OrdersQuery,
+          resolver: Queries::Orders::OrdersQuery,
           description: 'Returns array of order'
   end
 end

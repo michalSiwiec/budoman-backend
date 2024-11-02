@@ -1,4 +1,4 @@
-describe Queries::AllProductCategoriesQuery, type: :request do
+describe Queries::ProductCategories::ProductCategoriesQuery, type: :request do
   describe 'request' do
     subject { post '/graphql', params: { query: query } }
 
