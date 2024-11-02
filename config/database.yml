@@ -8,8 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: olx-backend_development
+  database: budoman-backend_development
 
 test:
   <<: *default
-  database: olx-backend_test
+  database: budoman-backend_test
+
+production:
+  <<: *default
+  database: budoman-backend_production

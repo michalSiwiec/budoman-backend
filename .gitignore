@@ -22,6 +22,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-/config/database.yml
 .env
 bin/monitor_resources.sh
