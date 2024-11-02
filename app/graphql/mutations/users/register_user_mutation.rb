@@ -3,7 +3,7 @@
 module Mutations
   module Users
     class RegisterUserMutation < Mutations::BaseMutation
-      argument :input, Types::Custom::Inputs::Mutations::RegisterUserInput, required: true
+      argument :input, Types::Custom::Inputs::Mutations::Users::RegisterUserInput, required: true
       type Types::Custom::Objects::UserObject
 
       def resolve(params)
