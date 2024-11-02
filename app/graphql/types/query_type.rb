@@ -14,7 +14,7 @@ module Types
           description: "Returns info if user's session is present"
 
     field :user,
-          resolver: Queries::UserQuery,
+          resolver: Queries::Users::UserQuery,
           description: 'Returns user'
 
     field :products_categories,
