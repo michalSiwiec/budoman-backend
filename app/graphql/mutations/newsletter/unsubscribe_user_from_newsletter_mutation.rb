@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+module Mutations
+  module Newsletter
+    class UnsubscribeUserFromNewsletterMutation < GraphQL::Schema::Mutation
+      argument :email, String, required: true
+      type Types::Custom::Objects::Users::UserObject
+
+      def resolve(params)
+        ::Newsletters::UnsubscribeFromNewsletterService.call(email: params.fetch(:email))
+      end
+    end
+  end
+end
