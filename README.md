@@ -4,14 +4,14 @@
 Budoman-backend is a backend app for construction shop.
 This is developed using:
 
-- [Ruby](https://ruby-doc.org/3.0.6/) (3.0.6)
+- [Ruby](https://ruby-doc.org/3.1.1/) (3.1.1)
 - [Rails](https://guides.rubyonrails.org/) (7.1.2)
 - [PostgreSQL](https://www.postgresql.org/) (14.0.0)
 - [Graphql](https://graphql-ruby.org/) (2.1.0)
 - [RSpec](https://rspec.info/documentation/) (6.0.3)
 
 ## Requirements
-- Ruby 3.0.6
+- Ruby 3.1.1
 - PostgreSQL 14
 
 ## Application setup
@@ -39,5 +39,6 @@ docker attach budoman-backend-app # To have access to container's session
 ```
 
 ## Deploy
-Application is automatically deployed on production through Github Actions.  
-Deploy in performing after merge to master brach when action responsible for testing and linting app is succesfull.
+```bash
+bundle exec cap production deploy
+```

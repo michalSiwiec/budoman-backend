@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:3003', 'shop-front-47901825.herokuapp.com'
+    origins 'localhost:3003', 'budoman.eu'
     resource '*', headers: :any, methods: [:get, :post, :patch, :put], credentials: true
   end
 end

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.6'
+ruby '3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 7.1.2'
@@ -46,6 +46,7 @@ gem 'avro_turf', '~> 1.12.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
+  # debugger
   gem 'pry'
 end
 
@@ -56,12 +57,25 @@ group :development do
   gem 'spring-watcher-listen'
   # to mount graphql panel
   gem 'graphiql-rails'
+  # Code linter
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rspec', require: false
   gem 'rubocop-graphql', require: false
+  # To detect outdated gems
   gem 'bundler-audit'
+  # To deploy application
+  gem 'capistrano', '~> 3.17', require: false
+  # To manage ruby version using rbenv
+  gem 'capistrano-rbenv', require: false
+  # To manage puma
+  gem 'capistrano3-puma', '6.0.0.beta.1', require: false
+  # To manage sidekiq
+  gem 'capistrano-sidekiq'
+  # To turn on automatically migration after deployment
+  gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-bundler', '~> 2.1', '>= 2.1.1'
 end
 
 group :test do

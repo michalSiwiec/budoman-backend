@@ -1,13 +1,7 @@
 #!/bin/bash
 
-# Start the SSH service
-service ssh start
-
-# Start cron service
-service cron start
-
-# Start sidekiq in background
-bundle exec sidekiq &
+# Install dependencies
+bundle install
 
 # Setup database
 DB_EXISTS=$(rails runner "puts (::ActiveRecord::Base.connection_pool.with_connection(&:active?) rescue false)")
@@ -19,6 +13,15 @@ else
   echo "Database exists. Running migrations..."
   rails db:migrate
 fi
+
+# Start the SSH service
+service ssh start
+
+# Start cron service
+service cron start
+
+# Start sidekiq in background
+bundle exec sidekiq &
 
 # Make sure that pid file doesn't exist
 if [ -f tmp/pids/server.pid ]; then
